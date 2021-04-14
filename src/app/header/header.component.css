@@ -1,0 +1,15 @@
+.navbar-brand {
+    color: white !important;
+}
+
+.navbar-light {
+    background-color: #6495ED !important;
+}
+
+.active {
+    color: #ccc !important;
+}
+
+.nav-link {
+    color: white !important;
+}
