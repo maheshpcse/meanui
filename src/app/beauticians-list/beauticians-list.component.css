@@ -1,0 +1,186 @@
+.beauty-card {
+  cursor: pointer;
+  height: 220px;
+  border-radius: 20px;
+  /* display: grid;
+    justify-content: center;
+    align-items: center; */
+}
+
+.details-card {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.active-status {
+  color: #52be80;
+  text-align: right !important;
+}
+
+.inactive-status {
+  color: crimson;
+  text-align: right !important;
+}
+
+.active-card {
+  color: white;
+  background-color: #6495ed;
+}
+
+.active-card .sub-titles {
+  color: #ccc;
+}
+
+.title {
+  font-size: 1em;
+}
+
+.sub-titles {
+  color: #ccc;
+  font-size: 0.9em;
+}
+
+/* sidenav styles */
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 55px;
+  right: 0;
+  background-color: white;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav .closebtn {
+  color: #6495ed;
+  text-decoration: none;
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.appointment-card {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-title {
+  color: #6495ed;
+  font-weight: 600;
+}
+
+.btn-action {
+  color: white;
+  background-color: #6495ed;
+  border-radius: 10px;
+}
+
+#main {
+  transition: margin-left 0.5s;
+  padding: 16px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+  }
+  .sidenav a {
+    font-size: 18px;
+  }
+}
+
+/* pagination styles */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination a {
+  cursor: pointer;
+  color: #1667af;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+  border: 1px solid #a7a7a7;
+  margin: 0 4px;
+}
+
+.pagination a.active {
+  background-color: #4caf50;
+  color: white;
+  border: 1px solid #4caf50;
+}
+
+.pagination a:hover:not(.active) {
+  background-color: #ddd;
+}
+
+.pagination li {
+  cursor: pointer;
+  color: #1667af;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+  border: 1px solid #a7a7a7;
+  margin: 0 4px;
+}
+
+.pagination li.active {
+  background-color: #4caf50;
+  color: white;
+  border: 1px solid #4caf50;
+}
+
+.pagination li:hover:not(.active) {
+  background-color: #ddd;
+}
+
+.isDisable {
+  cursor: default;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.titles {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.titles p {
+  color: gray;
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+.width-50 {
+  width: 150px;
+}
+
+/* .width-100 {
+  width: 50px;
+} */
+
+.sub-titles {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.btn-action-search {
+  cursor: pointer;
+  color: white;
+  background-color: #1667af;
+  padding: 5px;
+  width: 50px;
+}

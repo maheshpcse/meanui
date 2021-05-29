@@ -13,3 +13,7 @@
 .nav-link {
     color: white !important;
 }
+
+.logout-link {
+    cursor: pointer;
+}

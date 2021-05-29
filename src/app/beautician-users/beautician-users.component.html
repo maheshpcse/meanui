@@ -1,0 +1,80 @@
+<app-header></app-header>
+<div class="container-fluid">
+    <div class="row mt-3">
+        <div class="col-md-8">
+            <div class="container">
+                <div class="row" id="main">
+                    <div class="col-md-3" *ngFor="let item of tempArray;let i=index">
+                        <div class="card beauty-card" (click)="openNav(item, i)" [ngClass]="{'active-card': i + 1 == currentIndex && currentIndex + 1}">
+                            <div class="details-card p-0">
+                                <div class="text-center mt-3">
+                                    <img src="../../assets/images/user-avatar.png" alt="_profile"
+                                        class="img-responsive rounded-image" width="50" height="50">
+                                </div>
+                                <div class="title text-center mt-3">
+                                    <span>{{item.username}}</span>
+                                </div>
+                                <div class="sub-titles text-center mt-3">
+                                    <p>{{item.appointment_date}}</p>
+                                    <p>{{item.appointment_time}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                    <div class="col-md-3">
+                        <div id="mySidenav" class="sidenav">
+                            <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+                            <div class="text-center appointment-card">
+                                <span class="text-center add-title">Add/Update Report</span>
+                                <div class="user-data mt-5">
+                                    <div class="user-name">
+                                        <img src="../../assets/images/user-avatar.png" alt="_profile"
+                                        class="img-responsive rounded-image" width="50" height="50">
+                                        <p>User 1</p>
+                                    </div>
+                                    <div class="date-show">
+                                        <span><i class="fa fa-calendar" aria-hidden="false"></i></span>
+                                        <p>18-03-2021</p>
+                                    </div>
+                                </div>
+                                <div class="text-center time-show mt-5">
+                                    <span><i class="fa fa-clock-o" aria-hidden="false"></i></span>
+                                    <p>10:00 AM</p>
+                                </div>
+                                <div class="text-center p-3 mt-5">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="amountName" id="amountid" placeholder="Enter the amount">
+                                    </div>
+                                    <div class="form-group mt-3">
+                                        <textarea class="form-control" name="billName" id="billid" cols="20" rows="5" placeholder="Enter the Bill details here"></textarea>
+                                    </div>
+                                    <div class="form-group mt-5">
+                                        <button class="btn btn-action col-md-9" type="submit">SUBMIT</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4" *ngIf="false">
+            <div class="sidenavlist">
+                <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+                <p class="text-center add-user-title">Appointment List</p>
+                <div class="p-3" *ngFor="let item of usersArray; let i=index">
+                    <div class="users-card p-2">
+                        <p><img src="../../assets/images/user-avatar.png" alt="_profile"
+                            class="img-responsive rounded-image" width="50" height="50"></p>
+                        <p class="title">{{item.username}}</p>
+                        <p>{{item.appointment_date}}</p>
+                        <p>{{item.appointment_time}}</p>
+                        <p class="accept"><i class="fa fa-check" aria-hidden="false"></i></p>
+                        <p class="reject"><i class="fa fa-close" aria-hidden="false"></i></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

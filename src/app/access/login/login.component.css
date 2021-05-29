@@ -1,0 +1,63 @@
+.beauty-card {
+  cursor: pointer;
+  height: 220px;
+  border-radius: 20px;
+  /* display: grid;
+    justify-content: center;
+    align-items: center; */
+}
+
+.details-card {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.state {
+  color: #52be80;
+  text-align: right !important;
+}
+
+.active-card {
+  color: white;
+  background-color: #6495ed;
+}
+
+.active-card .sub-titles {
+  color: #ccc;
+}
+
+.title {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #6495ed;
+}
+
+.sub-titles {
+  color: #ccc;
+  font-size: 0.9em;
+}
+
+.sub-link {
+  text-decoration: none;
+  font-size: 1em;
+  font-weight: bold;
+  color: #6495ed !important;
+}
+
+input[type="text"],
+input[type="password"] {
+  /* box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset; */
+  box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset,
+    rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+  height: 50px;
+  font-weight: bold;
+}
+
+input[type="button"] {
+  width: 25%;
+  /* box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset; */
+  box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset,
+    rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+  font-weight: bold;
+}

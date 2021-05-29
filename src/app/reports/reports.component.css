@@ -1,0 +1,160 @@
+.reports-page {
+  background-color: white !important;
+}
+
+.booking-table {
+  cursor: pointer;
+}
+
+.table-head tr th {
+  color: #6495ed;
+  font-size: 1em;
+  font-weight: 600;
+}
+
+.table-body tr td {
+  color: darkslategray;
+  font-weight: lighter;
+  font-size: 0.8em;
+  font-weight: 600;
+}
+
+.table-body tr td:hover {
+  color: crimson;
+}
+
+.bill-card {
+  height: 220%;
+  background-color: lightblue;
+  border: none;
+  border-radius: 20px;
+}
+
+.header-bill {
+  display: inline-flex;
+  justify-content: space-evenly;
+  align-items: center;
+  font-size: 1.3em;
+}
+
+.bill-title {
+  font-size: 1em;
+  text-shadow: 3px 4px 7px rgba(81, 67, 21, 0.8);
+}
+
+.body-bill {
+  display: inline-flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.body-title {
+}
+
+.total-bill {
+  display: grid;
+  justify-content: flex-end;
+  align-items: center;
+  position:absolute;                 
+  bottom:0;                         
+  right: 0;  
+}
+
+.sign-data {
+  display: grid;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.sign {
+  font-size: 1.3em;
+  font-weight: 600;
+}
+
+.beauty-card {
+  cursor: pointer;
+  height: 220px;
+  border-radius: 20px;
+  /* display: grid;
+    justify-content: center;
+    align-items: center; */
+}
+
+.details-card {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.state {
+  color: #52be80;
+  text-align: right !important;
+}
+
+.active-card {
+  color: white;
+  background-color: #6495ed;
+}
+
+.active-card .sub-titles {
+  color: #ccc;
+}
+
+.title {
+  font-size: 1em;
+}
+
+.sub-titles {
+  color: #ccc;
+  font-size: 0.9em;
+}
+
+/* sidenav styles */
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 55px;
+  right: 0;
+  background-color: white;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav .closebtn {
+  color: #6495ed;
+  text-decoration: none;
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.appointment-card {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-action {
+  color: white;
+  background-color: #6495ed;
+  border-radius: 10px;
+}
+
+#main {
+  transition: margin-left 0.5s;
+  padding: 16px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+  }
+  .sidenav a {
+    font-size: 18px;
+  }
+}

@@ -1,0 +1,13 @@
+.titles {
+  color: gray;
+  font-size: 1em;
+  background-color: lightgray;
+  border-left: 5px solid #6495ED;
+  padding: 2%;
+}
+
+.sub-titles {
+  color: #6495ED;
+  font-size: 1.2em;
+  text-transform: uppercase;
+}

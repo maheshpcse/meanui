@@ -1,0 +1,60 @@
+<app-header></app-header>
+<div class="container">
+    <div class="row mt-3">
+        <div class="col-md-12">
+            <div class="titles">
+                <p>Add Beauty Parlour</p>
+                <button class="btn btn-action" (click)="onActionBack()">
+                    <i class="fa fa-angle-left"></i>
+                    <span class="ml-2">Back</span>
+                </button>
+            </div>
+            <hr>
+        </div>
+        <div class="col-md-12">
+            <form #beautyParlourForm="ngForm">
+                <div class="container">
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label for="beauticianname">Beautician Name</label>
+                            <input class="form-control" type="text" name="beauticianname" id="beauticiannameId" placeholder="Enter beautician name" [(ngModel)]="beauticianName" required>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="experience">Experience</label>
+                            <input class="form-control" type="number" name="expName" id="expId" placeholder="Enter experience" [(ngModel)]="experience" required>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="parlourname">Beauty Parlour Name</label>
+                            <input class="form-control" type="text" name="parlournamename" id="parlournameId" placeholder="Enter beauty parlour name" [(ngModel)]="parlourName" required>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="lawfirmname">Law Firm Name</label>
+                            <input class="form-control" type="text" name="lawfirmname" id="lawfirmnameId" placeholder="Enter law firm name" [(ngModel)]="lawFirmName" required>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="place">Address</label>
+                            <input class="form-control" type="text" name="placeName" id="palceId" placeholder="Enter address" [(ngModel)]="parlourAddress" required>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="rating">Rating</label>
+                            <select class="form-control" name="ratingName" id="ratingId" [(ngModel)]="rating" required>
+                                <option value="null" disabled>Select Rating :</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mt-5">
+                        <div class="form-group col-md-4">
+                            <button class="btn btn-action-cancel" type="submit" (click)="onActionBack()">Cancel</button>
+                            <button class="btn btn-action-add ml-2" type="submit" (click)="saveBeautyParlourData()" [disabled]="beautyParlourForm.invalid">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

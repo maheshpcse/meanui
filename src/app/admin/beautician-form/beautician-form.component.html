@@ -1,0 +1,56 @@
+<app-header></app-header>
+<div class="container">
+    <div class="row mt-3">
+        <div class="col-md-12">
+            <div class="titles">
+                <p>Add Beautician</p>
+                <button class="btn btn-action" (click)="onActionBack()">
+                    <i class="fa fa-angle-left"></i>
+                    <span class="ml-2">Back</span>
+                </button>
+            </div>
+            <hr>
+        </div>
+        <div class="col-md-12">
+            <form #beauticianForm="ngForm">
+                <div class="container">
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label for="firstname">Full Name</label>
+                            <input class="form-control" type="text" name="firstname" id="firstnameId" placeholder="Enter fullname" [(ngModel)]="fullName" required>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="username">User Name</label>
+                            <input class="form-control" type="text" name="username" id="usernameId" placeholder="Enter username" [(ngModel)]="userName" required>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="email">Email Address</label>
+                            <input class="form-control" type="email" name="emailname" id="emailId" placeholder="Enter email address" [(ngModel)]="emailName" required>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="password">Password</label>
+                            <div class="input-group">
+                                <button class="btn btn-action-generate" type="submit" (click)="generatePassword()">Generate Password</button>
+                                <input class="form-control" type="password" name="pwdName" id="pwdId" placeholder="i.e. abcxyz" [(ngModel)]="passWord" disabled required>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="mobilenumber">Phone Number</label>
+                            <input class="form-control" type="number" name="phoneNum" id="phoneNumId" placeholder="Enter mobile number" [(ngModel)]="mobileNumber" required>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="profile">Profile</label>
+                            <input class="form-control" type="file" name="profileName" id="profileId" [(ngModel)]="profileImage" required>
+                        </div>
+                    </div>
+                    <div class="row mt-5">
+                        <div class="form-group col-md-4">
+                            <button class="btn btn-action-cancel" type="submit" (click)="onActionBack()">Cancel</button>
+                            <button class="btn btn-action-add ml-2" type="submit" (click)="saveBeauticianData()" [disabled]="beauticianForm.invalid">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

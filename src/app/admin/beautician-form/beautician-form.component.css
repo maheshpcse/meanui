@@ -1,0 +1,63 @@
+.titles {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.titles p {
+  font-size: 1.2em;
+  color: gray;
+}
+
+.btn-action {
+  background-color: #bfcbd6;
+}
+
+.btn-action:hover {
+  background-color: #aab5c0;
+}
+
+label {
+  color: gray;
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="file"] {
+  height: 50px;
+  padding: 10px;
+  font-size: 1em;
+  color: gray;
+}
+
+.btn-action-generate {
+  color: white;
+  background-color: #6495ED;
+}
+
+.btn-action-generate:hover {
+  color: white;
+  background-color: #1667af;
+}
+
+.btn-action-add {
+  color: white;
+  background-color: #1667af;
+}
+
+.btn-action-add:hover {
+  color: white;
+  background-color: #1668af;
+}
+
+.btn-action-cancel {
+  background-color: #bfcbd6;
+}
+
+.btn-action-cancel:hover {
+  background-color: #aab5c0;
+}
