@@ -19,6 +19,7 @@ export class SignupComponent implements OnInit {
   password: any = null;
   confirmPassword: any = null;
   @ViewChild('signupForm', { static: false }) signupFormRef: NgForm;
+  spinner: any = false;
 
   constructor(
     public router: Router,
@@ -54,6 +55,8 @@ export class SignupComponent implements OnInit {
     if (this.password !== this.confirmPassword) {
       return this.toastr.errorToastr('Passwords are not matched.');
     }
+    
+    this.spinner = true;
 
     const userSignupPayload = {
       fullname: this.fullName,
@@ -72,11 +75,10 @@ export class SignupComponent implements OnInit {
       if (response.success) {
         this.toastr.successToastr(response.message);
         this.router.navigate(['/login']);
-        this.resetForm();
       } else {
         this.toastr.errorToastr(response.message);
-        this.resetForm();
       }
+      this.resetForm();
     }, (error: any) => {
       this.toastr.errorToastr('Network failed, Please try again.');
       this.resetForm();
@@ -93,6 +95,7 @@ export class SignupComponent implements OnInit {
     this.mobileNumber = null;
     this.password = null;
     this.confirmPassword = null;
+    this.spinner = false;
   }
 
 }

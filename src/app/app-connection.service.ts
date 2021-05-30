@@ -25,6 +25,7 @@ export const APIURL = {
 
   // beauticians API URL's
   GET_ALL_BEAUTICIANS: environment.apiUrl + '/get_all_beauticians',
+  GET_ALL_USERS: environment.apiUrl + '/get_all_users',
 
   // admin services API URL's
   ADD_BEAUTICIAN: environment.apiUrl + '/add_beautician',

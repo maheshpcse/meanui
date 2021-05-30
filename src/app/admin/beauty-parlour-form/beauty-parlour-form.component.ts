@@ -20,6 +20,8 @@ export class BeautyParlourFormComponent implements OnInit {
   lawFirmName: any = null;
   parlourAddress: any = null;
   rating: any = null;
+  usersList = [];
+  userId: any = null;
   @ViewChild('beautyParlourForm', { static: false }) beautyParlourFormRef: NgForm;
 
   constructor(
@@ -30,6 +32,20 @@ export class BeautyParlourFormComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.getAllUsersList();
+  }
+
+  getAllUsersList() {
+    this.beauticianService.getAllUsers().subscribe((response: any) => {
+      console.log('Get all users response isss', response);
+      if (response.success) {
+        this.usersList = response.data;
+      } else {
+        this.toastr.errorToastr(response.message);
+      }
+    }, (error: any) => {
+      this.toastr.errorToastr('Network failed, Please try again.')
+    });
   }
 
   onActionBack() {
@@ -38,6 +54,7 @@ export class BeautyParlourFormComponent implements OnInit {
 
   saveBeautyParlourData() {
     const beautyParlourPayload = {
+      owner_id: Number(this.userId),
       beautician_name: this.beauticianName,
       experience: Number(this.experience),
       parlour_name: this.parlourName,
@@ -71,6 +88,7 @@ export class BeautyParlourFormComponent implements OnInit {
     this.lawFirmName = null;
     this.parlourAddress = null;
     this.rating = null;
+    this.userId = null;
   }
 
 }

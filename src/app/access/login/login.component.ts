@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
   userInput: any = null;
   password: any = null;
   @ViewChild('loginForm', { static: false }) loginFormRef: NgForm;
+  spinner: any = false;
 
   constructor(
     public router: Router,
@@ -35,6 +36,8 @@ export class LoginComponent implements OnInit {
     if (!this.password) {
       return this.toastr.errorToastr('Password is required.');
     }
+
+    this.spinner = true;
 
     const userLoginPayload = {
       userinput: this.userInput,
@@ -64,11 +67,10 @@ export class LoginComponent implements OnInit {
         } else if (response.data.role === 'beautician') {
           this.router.navigate(['/beautician-dashboard']);
         }
-        this.resetForm();
       } else {
         this.toastr.errorToastr(response.message);
-        this.resetForm();
       }
+      this.resetForm();
     }, (error: any) => {
       this.toastr.errorToastr('Network failed, Please try again.');
       this.resetForm();
@@ -81,6 +83,7 @@ export class LoginComponent implements OnInit {
     }
     this.userInput = null;
     this.password = null;
+    this.spinner = false;
   }
 
 }

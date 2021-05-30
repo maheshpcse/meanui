@@ -171,7 +171,7 @@
   width: 50px;
 } */
 
-.sub-titles {
+.search-fields {
   display: flex;
   justify-content: space-between;
   align-items: baseline;

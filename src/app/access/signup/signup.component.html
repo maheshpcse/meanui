@@ -1,5 +1,5 @@
 <app-header></app-header>
-<div class="container-fluid">
+<div class="container-fluid" [ngClass]="{'page-container': spinner === true}">
     <div class="row mt-3">
         <div class="col-md-12">
             <div class="container">
@@ -40,3 +40,5 @@
         </div>
     </div>
 </div>
+
+<div id="loader" *ngIf="spinner"></div>

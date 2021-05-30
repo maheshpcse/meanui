@@ -13,6 +13,10 @@ export class BeauticianService {
     return this.http.post<any>(APIURL.GET_ALL_BEAUTICIANS, data);
   }
 
+  getAllUsers() {
+    return this.http.get<any>(APIURL.GET_ALL_USERS);
+  }
+
   addBooking(data: any) {
     return this.http.post<any>(APIURL.ADD_BOOKING, data);
   }
@@ -23,5 +27,18 @@ export class BeauticianService {
 
   addBeautyParlour(data: any) {
     return this.http.post<any>(APIURL.ADD_BEAUTY_PARLOUR, data);
+  }
+
+  // beautician API Services
+  getAllUserBookings(data: any) {
+    return this.http.post<any>(APIURL.GET_ALL_USER_BOOKINGS, data);
+  }
+
+  updateBookingStatusById(id: any) {
+    return this.http.post<any>(APIURL.UPDATE_BOOKING_STATUS_BY_ID, id);
+  }
+
+  addUpdateUserReport(data: any) {
+    return this.http.post<any>(APIURL.ADD_REPORT, data);
   }
 }

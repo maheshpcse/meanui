@@ -104,6 +104,7 @@ export class BeauticiansListComponent implements OnInit {
 
     let endLimit = Math.round(this.count/this.limit) === 0 ? Math.round(this.count/this.limit) : Math.round(this.count/this.limit) + 1;
     endLimit = endLimit === 0 ? 1 : endLimit;
+    console.log('end limit isss', endLimit);
     this.totalPages = [];
     for(let num = 1; num <= Number(endLimit); num += 1) {
       this.totalPages.push(num);

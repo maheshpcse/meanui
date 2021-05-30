@@ -16,6 +16,13 @@
                 <div class="container">
                     <div class="row">
                         <div class="form-group col-md-4">
+                            <label for="owner">Owner Name</label>
+                            <select class="form-control" name="ownerName" id="ownerId" [(ngModel)]="userId" required>
+                                <option value="null" disabled>Select Owner :</option>
+                                <option *ngFor="let item of usersList; let i=index" [value]="item.user_id">{{ item.fullname }}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4">
                             <label for="beauticianname">Beautician Name</label>
                             <input class="form-control" type="text" name="beauticianname" id="beauticiannameId" placeholder="Enter beautician name" [(ngModel)]="beauticianName" required>
                         </div>
