@@ -26,6 +26,7 @@ import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard
 import { NotFoundComponent } from './not-found/not-found.component';
 import { BeauticiansListComponent } from './beauticians-list/beauticians-list.component';
 import { BeauticianUsersComponent } from './beautician-users/beautician-users.component';
+import { BeauticianReportsComponent } from './beautician-reports/beautician-reports.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +44,8 @@ import { BeauticianUsersComponent } from './beautician-users/beautician-users.co
     AdminDashboardComponent,
     NotFoundComponent,
     BeauticiansListComponent,
-    BeauticianUsersComponent
+    BeauticianUsersComponent,
+    BeauticianReportsComponent
   ],
   imports: [
     BrowserModule,

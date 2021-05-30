@@ -7,6 +7,7 @@ export const APIURL = {
 
   // user bookings API URL's
   GET_ALL_USER_BOOKINGS: environment.apiUrl + '/get_all_user_bookings',
+  GET_ALL_USER_APPOINTMENTS: environment.apiUrl + '/get_all_user_appointments',
   GET_BOOKINGS_BY_BEAUTICIAN: environment.apiUrl + '/get_bookings_by_beautician',
   GET_BOOKINGS_BY_ID: environment.apiUrl + '/get_booking_by_id',
   UPDATE_BOOKING_STATUS_BY_ID: environment.apiUrl + '/update_booking_status_by_id',

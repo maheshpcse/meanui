@@ -12,6 +12,9 @@
         <li class="nav-item active" *ngIf="authUserService.isLoggedIn() && role == 'user'">
             <a class="nav-link" [routerLink]="['/beauticians']">Beauticians</a>
         </li>
+        <li class="nav-item active" *ngIf="authUserService.isLoggedIn() && role == 'user'">
+            <a class="nav-link" [routerLink]="['/reports']">Reports</a>
+        </li>
         <li class="nav-item active" *ngIf="authUserService.isLoggedIn() && role == 'admin'">
             <a class="nav-link" [routerLink]="['/admin-dashboard']">Home</a>
         </li>
@@ -22,10 +25,10 @@
             <a class="nav-link" [routerLink]="['/beautician-dashboard']">Home</a>
         </li>
         <li class="nav-item active" *ngIf="authUserService.isLoggedIn() && role == 'beautician'">
-            <a class="nav-link" [routerLink]="['/beautician-users']">Users</a>
+            <a class="nav-link" [routerLink]="['/beautician-users']">Appointments</a>
         </li>
         <li class="nav-item" *ngIf="authUserService.isLoggedIn() && role == 'beautician'">
-            <a class="nav-link" [routerLink]="['/reports']">Reports</a>
+            <a class="nav-link" [routerLink]="['/beautician-reports']">Reports</a>
         </li>
         <li class="nav-item" *ngIf="!authUserService.isLoggedIn()">
             <a class="nav-link" [routerLink]="['/login']">Login</a>

@@ -4,7 +4,7 @@
         <div class="col-md-8">
             <div class="container">
                 <div class="titles">
-                    <p>All User Bookings List</p>
+                    <p>All User Appointment List</p>
                     <div class="search-fields">
                         <select class="form-control width-50" name="statusName" id="statusId" [(ngModel)]="statusQuery"
                             (click)="onSelectStatus()">
@@ -45,6 +45,45 @@
                         </div>
                         <br>
                     </div>
+                    <div class="col-md-3">
+                        <div id="mySidenav" class="sidenav">
+                            <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+                            <div class="text-center appointment-card">
+                                <span class="text-center add-title">Add/Update Report</span>
+                                <hr>
+                                <div class="user-data mt-5">
+                                    <div class="user-name">
+                                        <img src="../../assets/images/user-avatar.png" alt="_profile"
+                                            class="img-responsive rounded-image" width="50" height="50">
+                                        <p>{{ viewItem?.fullname }}</p>
+                                    </div>
+                                    <div class="date-show">
+                                        <span><i class="fa fa-calendar" aria-hidden="false"></i></span>
+                                        <p>{{ viewItem?.date | date }}</p>
+                                    </div>
+                                </div>
+                                <div class="text-center time-show mt-5">
+                                    <span><i class="fa fa-clock-o" aria-hidden="false"></i></span>
+                                    <p>{{ viewItem?.time }}</p>
+                                </div>
+                                <div class="text-center p-3 mt-5">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control amount-input" name="amountName"
+                                            id="amountid" placeholder="Enter the amount" [(ngModel)]="amount" required>
+                                    </div>
+                                    <div class="form-group mt-3">
+                                        <textarea class="form-control" name="billName" id="billid" cols="20" rows="5"
+                                            placeholder="Enter the Bill details here" [(ngModel)]="bills"
+                                            required></textarea>
+                                    </div>
+                                    <div class="form-group mt-5">
+                                        <button class="btn btn-action col-md-9" type="submit"
+                                            [disabled]="!amount || !bills" (click)="saveUserReport()">SUBMIT</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
@@ -66,50 +105,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="sidenavlist">
-                <!-- <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a> -->
-                <p class="text-center add-user-title">Appointment List</p>
-                <hr>
-                <div class="p-3" *ngFor="let item of pendingUsers; let i=index">
-                    <div class="users-card p-2">
-                        <p><img src="../../assets/images/user-avatar.png" alt="_profile"
-                                class="img-responsive rounded-image" width="50" height="50"></p>
-                        <p class="title">{{item.fullname}}</p>
-                        <p>{{item.date | date:'yyyy-MM-dd'}}</p>
-                        <p>{{item.time}}</p>
-                        <p class="accept" (click)="onSelectUser(item, 1)" data-toggle="modal"
-                            data-target="#confirmModal"><i class="fa fa-check" aria-hidden="false"></i></p>
-                        <p class="reject" (click)="onSelectUser(item, 0)" data-toggle="modal"
-                            data-target="#confirmModal"><i class="fa fa-close" aria-hidden="false"></i></p>
-                    </div>
-                </div>
-                <p class="text-center" *ngIf="pendingUsers.length == 0">No pending users found.</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- user status update confirmation Modal -->
-<div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h6 class="modal-title" id="confirmModalLabel">User request confirmation</h6>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p *ngIf="selectStatus === 1">Are you sure, you want to accept a user request ?</p>
-                <p *ngIf="selectStatus === 0">Are you sure, you want to reject a user request ?</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-action-cancel" data-dismiss="modal">No</button>
-                <button type="button" class="btn btn-action-add" (click)="onUpdateStatus()">Yes</button>
             </div>
         </div>
     </div>

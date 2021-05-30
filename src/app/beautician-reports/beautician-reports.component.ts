@@ -5,15 +5,18 @@ import { AuthUserService } from '../api-services/auth-user.service';
 import { BeauticianService } from '../api-services/beautician.service';
 import * as _ from 'underscore';
 import * as moment from 'moment';
+declare var $: any;
 
 @Component({
-  selector: 'app-beauticians-list',
-  templateUrl: './beauticians-list.component.html',
-  styleUrls: ['./beauticians-list.component.css']
+  selector: 'app-beautician-reports',
+  templateUrl: './beautician-reports.component.html',
+  styleUrls: ['./beautician-reports.component.css']
 })
-export class BeauticiansListComponent implements OnInit {
+export class BeauticianReportsComponent implements OnInit {
 
   public userId: any = sessionStorage.getItem('userid');
+  public username: any = sessionStorage.getItem('username');
+  public role: any = sessionStorage.getItem('role');
 
   tempArray: any = [];
   viewItem: any = {};
@@ -30,7 +33,10 @@ export class BeauticiansListComponent implements OnInit {
   searchQuery: any = '';
   statusQuery: any = null;
   filterStatus: any = null;
-  beauticians: any = [];
+  usersList: any = [];
+
+  amount: any = null;
+  bills: any = null;
 
   constructor(
     public router: Router,
@@ -40,18 +46,14 @@ export class BeauticiansListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    for (let i = 0; i < 6; i++) {
-      const start = i === 0 ? i * 3 : ((i + 1) * 3) - 3;
-      const end = 3;
-      const alphabits = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-      const tempAlphabits = alphabits;
-      const resultName = tempAlphabits.splice(start, end).join('');
-      this.tempArray.push({
-        name: resultName,
-        exp: i
-      });
-    }
-    this.getAllBeauticiansData();
+    // for (let i = 0; i < 6; i++) {
+    //   this.tempArray.push({
+    //     username: `user ${i+1}`,
+    //     appointment_date: `2021-05-0${i+1}`,
+    //     appointment_time: `0${i+1}:00 AM`
+    //   });
+    // }
+    this.getAllUserAppointmentsData();
   }
 
   openNav(item?: any, index?: any) {
@@ -64,23 +66,28 @@ export class BeauticiansListComponent implements OnInit {
   closeNav() {
     this.viewItem = {};
     this.currentIndex = null;
+    this.amount = null;
+    this.bills = null;
     document.getElementById('mySidenav').style.width = '0';
     document.getElementById('main').style.marginRight = '0';
   }
 
-  getAllBeauticiansData() {
-    const beauticianPayload = {
+  getAllUserAppointmentsData() {
+    const userBookingsPayload = {
       limit: Number(this.limit),
       page: Number(this.page),
       query: this.searchQuery,
-      status: !this.statusQuery || this.statusQuery === null ? 'all' : Number(this.statusQuery)
+      status: !this.statusQuery || this.statusQuery === null ? 'all' : Number(this.statusQuery),
+      user_id: Number(this.userId)
     }
-    console.log('Post payload to get all beauticians data isss', beauticianPayload);
+    console.log('Post payload to get all users data isss', userBookingsPayload);
 
-    this.beauticianService.getAllBeauticians(beauticianPayload).subscribe((response: any) => {
-      console.log('Get all beauticians response isss', response);
+    this.beauticianService.getAllUserAppointments(userBookingsPayload).subscribe((response: any) => {
+      console.log('Get all users response isss', response);
       if (response.success) {
-        this.beauticians = response.data;
+        this.usersList = _.filter(response.data, (e: any) => {
+          return e.booking_status === 0 || e.booking_status === 1
+        });
         this.count = response.count;
         this.createPager();
       } else {
@@ -94,7 +101,7 @@ export class BeauticiansListComponent implements OnInit {
   getPage(event: any) {
     console.log('Selected page isss', event);
     this.page = Number(event);
-    this.getAllBeauticiansData();
+    this.getAllUserAppointmentsData();
   }
 
   createPager() {
@@ -115,37 +122,39 @@ export class BeauticiansListComponent implements OnInit {
   onSearchData() {
     // console.log('search request data isss', this.searchQuery);
     if (this.searchQuery || this.searchQuery !== '') {
-      this.getAllBeauticiansData();
+      this.getAllUserAppointmentsData();
     }
   }
 
   onInputSearch() {
     if (!this.searchQuery || this.searchQuery === '') {
-      this.getAllBeauticiansData();
+      this.getAllUserAppointmentsData();
     }
   }
 
   onSelectStatus() {
-    this.getAllBeauticiansData();
+    this.getAllUserAppointmentsData();
   }
 
-  addBookingData() {
-    const bookingPayload = {
-      booking_id: null,
-      user_id: Number(this.userId),
-      beautician_id: Number(this.viewItem.beautician_id),
-      law_firm_name: this.viewItem.law_firm_name,
-      date: moment(this.selectDate).format('YYYY-MM-DD'),
-      time: moment(this.selectTime).format('HH:MM:ss'),
-      booking_status: 2
+  saveUserReport() {
+    const reportPayload = {
+      report_id: null,
+      appointment_id: Number(this.viewItem.app_id),
+      user_id: Number(this.viewItem.user_id),
+      date: moment().format('YYYY-MM-DD'),
+      amount: this.amount,
+      report: this.bills,
+      issued_by: this.username,
+      status: 1
     }
-    console.log('Post payload to add booking data isss', bookingPayload);
+    console.log('Post payload to add/update report data isss', reportPayload);
 
-    this.beauticianService.addBooking(bookingPayload).subscribe((response: any) => {
-      console.log('Get add booking response isss', response);
+    this.beauticianService.addUpdateUserReport(reportPayload).subscribe((response: any) => {
+      console.log('Get add/update report data response isss', response);
       if (response.success) {
         this.toastr.successToastr(response.message);
         this.closeNav();
+        this.getAllUserAppointmentsData();
       } else {
         this.toastr.errorToastr(response.message);
       }

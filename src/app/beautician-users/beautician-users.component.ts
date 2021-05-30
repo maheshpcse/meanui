@@ -149,32 +149,6 @@ export class BeauticianUsersComponent implements OnInit {
     this.getAllUserBookingsData();
   }
 
-  saveUserReport() {
-    const reportPayload = {
-      report_id: null,
-      appointment_id: null,
-      date: moment().format('YYYY-MM-DD'),
-      amount: this.amount,
-      report: this.bills,
-      issued_by: this.username,
-      status: 1
-    }
-    console.log('Post payload to add/update report data isss', reportPayload);
-
-    this.beauticianService.addUpdateUserReport(reportPayload).subscribe((response: any) => {
-      console.log('Get add/update report data response isss', response);
-      if (response.success) {
-        this.toastr.successToastr(response.message);
-        this.closeNav();
-        this.getAllUserBookingsData();
-      } else {
-        this.toastr.errorToastr(response.message);
-      }
-    }, (error: any) => {
-      this.toastr.errorToastr('Network failed, Please try again.');
-    });
-  }
-
   onSelectUser(item: any, value: any) {
     console.log('Select user isss', item);
     this.selectUser = item;
@@ -185,6 +159,9 @@ export class BeauticianUsersComponent implements OnInit {
     const statusPayload = {
       booking_id: Number(this.selectUser.book_id),
       booking_status: Number(this.selectStatus),
+      user_id: Number(this.selectUser.user_id),
+      date: moment(this.selectUser.date).format('YYYY-MM-DD'),
+      issued_by: this.username
     }
     console.log('Post payload to update user status isss', statusPayload);
 

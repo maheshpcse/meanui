@@ -34,6 +34,10 @@ export class BeauticianService {
     return this.http.post<any>(APIURL.GET_ALL_USER_BOOKINGS, data);
   }
 
+  getAllUserAppointments(data: any) {
+    return this.http.post<any>(APIURL.GET_ALL_USER_APPOINTMENTS, data);
+  }
+
   updateBookingStatusById(id: any) {
     return this.http.post<any>(APIURL.UPDATE_BOOKING_STATUS_BY_ID, id);
   }

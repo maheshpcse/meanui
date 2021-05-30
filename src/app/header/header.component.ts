@@ -12,11 +12,12 @@ export class HeaderComponent implements OnInit {
   navItems: any = [
     {name: 'Home', path: '/user-dashboard'},
     {name: 'Beauticians', path: '/beauticians'},
+    {name: 'Reports', path: '/reports'},
     {name: 'Home', path: '/admin-dashboard'},
     {name: 'Services', path: '/services'},
     {name: 'Home', path: '/beautician-dashboard'},
-    {name: 'Users', path: '/beautician-users'},
-    {name: 'Reports', path: '/reports'},
+    {name: 'Appointments', path: '/beautician-users'},
+    {name: 'Reports', path: '/beautician-reports'},
     {name: 'Login', path: '/login'},
     {name: 'Signup', path: '/signup'},
     {name: 'Logout', path: '/login'}
