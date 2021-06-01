@@ -19,28 +19,34 @@
                             <label for="owner">Owner Name</label>
                             <select class="form-control" name="ownerName" id="ownerId" [(ngModel)]="userId" required>
                                 <option value="null" disabled>Select Owner :</option>
-                                <option *ngFor="let item of usersList; let i=index" [value]="item.user_id">{{ item.fullname }}</option>
+                                <option *ngFor="let item of usersList; let i=index" [value]="item.user_id">{{
+                                    item.fullname }}</option>
                             </select>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="beauticianname">Beautician Name</label>
-                            <input class="form-control" type="text" name="beauticianname" id="beauticiannameId" placeholder="Enter beautician name" [(ngModel)]="beauticianName" required>
+                            <input class="form-control" type="text" name="beauticianname" id="beauticiannameId"
+                                placeholder="Enter beautician name" [(ngModel)]="beauticianName" required>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="experience">Experience</label>
-                            <input class="form-control" type="number" name="expName" id="expId" placeholder="Enter experience" [(ngModel)]="experience" required>
+                            <input class="form-control" type="number" name="expName" id="expId"
+                                placeholder="Enter experience" [(ngModel)]="experience" required>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="parlourname">Beauty Parlour Name</label>
-                            <input class="form-control" type="text" name="parlournamename" id="parlournameId" placeholder="Enter beauty parlour name" [(ngModel)]="parlourName" required>
+                            <input class="form-control" type="text" name="parlournamename" id="parlournameId"
+                                placeholder="Enter beauty parlour name" [(ngModel)]="parlourName" required>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="lawfirmname">Law Firm Name</label>
-                            <input class="form-control" type="text" name="lawfirmname" id="lawfirmnameId" placeholder="Enter law firm name" [(ngModel)]="lawFirmName" required>
+                            <input class="form-control" type="text" name="lawfirmname" id="lawfirmnameId"
+                                placeholder="Enter law firm name" [(ngModel)]="lawFirmName" required>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="place">Address</label>
-                            <input class="form-control" type="text" name="placeName" id="palceId" placeholder="Enter address" [(ngModel)]="parlourAddress" required>
+                            <input class="form-control" type="text" name="placeName" id="palceId"
+                                placeholder="Enter address" [(ngModel)]="parlourAddress" required>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="rating">Rating</label>
@@ -53,11 +59,55 @@
                                 <option value="5">5</option>
                             </select>
                         </div>
+                        <!-- <div class="form-group col-md-4">
+                            <label for="service">Service Name</label>
+                            <angular2-multiselect class="form-control" [data]="servicesList"
+                                [(ngModel)]="selectedServices" [ngModelOptions]="{standalone: true}"
+                                [settings]="servicesSettings" (onSelect)="onSerivceSelect($event)"
+                                (onDeSelect)="OnSerivceDeSelect($event)" (onSelectAll)="onSelectAllSerivce($event)"
+                                (onDeSelectAll)="onDeSelectAllSerivce($event)"></angular2-multiselect>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="subservice">Sub Service Name</label>
+                            <angular2-multiselect class="form-control" [data]="subServicesList"
+                                [(ngModel)]="selectedSubServices" [ngModelOptions]="{standalone: true}"
+                                [settings]="subServicesSettings" (onSelect)="onSubServiceSelect($event)"
+                                (onDeSelect)="OnSubServiceDeSelect($event)"
+                                (onSelectAll)="onSelectAllSubService($event)"
+                                (onDeSelectAll)="onDeSelectAllSubService($event)"></angular2-multiselect>
+                        </div> -->
+                        <div class="form-group col-md-12">
+                            <div id="accordion">
+                                <div class="card" *ngFor="let item of servicesList; let j=index;">
+                                    <div class="card-header label-title" [ngClass]="{'isActive': selectAll[j] === true}">
+                                        <input class="form-control col-md-1" type="checkbox" name="serviceName-{{j}}" id="serviceId-{{j}}" (input)="onInputAction(item, j, $event.target.checked)" [checked]="selectAll[j]">
+                                        <a class="card-link" data-toggle="collapse" href="#collapseOne" (click)="onCollapseBody(item, j)">
+                                            {{ item.service_name | titlecase }}
+                                        </a>
+                                    </div>
+                                    <div id="collapseOne-{{j}}" class="collapse-{{j}}" data-parent="#accordion" [ngClass]="{'show': j===currentIndex}">
+                                        <div class="card-body">
+                                            <!-- Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                                            consequat. -->
+                                            <angular2-multiselect class="form-control col-md-4" [data]="allSubServices[j]"
+                                                [(ngModel)]="selectedSubServices[j]" [ngModelOptions]="{standalone: true}"
+                                                [settings]="subSettings[j]" (onSelect)="onSubServiceSelect($event)"
+                                                (onDeSelect)="OnSubServiceDeSelect($event)"
+                                                (onSelectAll)="onSelectAllSubService($event)"
+                                                (onDeSelectAll)="onDeSelectAllSubService($event)"></angular2-multiselect>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="row mt-5">
                         <div class="form-group col-md-4">
                             <button class="btn btn-action-cancel" type="submit" (click)="onActionBack()">Cancel</button>
-                            <button class="btn btn-action-add ml-2" type="submit" (click)="saveBeautyParlourData()" [disabled]="beautyParlourForm.invalid">Submit</button>
+                            <button class="btn btn-action-add ml-2" type="submit" (click)="saveBeautyParlourData()"
+                                [disabled]="beautyParlourForm.invalid">Submit</button>
                         </div>
                     </div>
                 </div>

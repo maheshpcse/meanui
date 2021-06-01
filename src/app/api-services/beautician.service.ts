@@ -9,16 +9,22 @@ export class BeauticianService {
 
   constructor(private http: HttpClient) { }
 
+  // user API services
   getAllBeauticians(data: any) {
     return this.http.post<any>(APIURL.GET_ALL_BEAUTICIANS, data);
   }
 
+  addBooking(data: any) {
+    return this.http.post<any>(APIURL.ADD_BOOKING, data);
+  }
+
+  // admin API services
   getAllUsers() {
     return this.http.get<any>(APIURL.GET_ALL_USERS);
   }
 
-  addBooking(data: any) {
-    return this.http.post<any>(APIURL.ADD_BOOKING, data);
+  getAllBeautyServices() {
+    return this.http.get<any>(APIURL.GET_ALL_BEAUTY_SERVICES);
   }
 
   addBeautician(data: any) {

@@ -17,6 +17,7 @@ import { AuthUserService } from './api-services/auth-user.service';
 import { AuthGuardService } from './api-services/auth-guard.service';
 import { AuthInterceptorService } from './api-services/auth-interceptor.service';
 import { ToastrModule } from 'ng6-toastr-notifications';
+import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
 import { BeauticianService } from './api-services/beautician.service';
 import { BeauticianFormComponent } from './admin/beautician-form/beautician-form.component';
 import { BeautyParlourFormComponent } from './admin/beauty-parlour-form/beauty-parlour-form.component';
@@ -55,7 +56,8 @@ import { BeauticianReportsComponent } from './beautician-reports/beautician-repo
     ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
     CalendarModule,
     AppRoutingModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    AngularMultiSelectModule
   ],
   providers: [
     AuthUserService,

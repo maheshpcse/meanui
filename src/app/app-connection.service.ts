@@ -30,5 +30,6 @@ export const APIURL = {
 
   // admin services API URL's
   ADD_BEAUTICIAN: environment.apiUrl + '/add_beautician',
-  ADD_BEAUTY_PARLOUR: environment.apiUrl + '/add_beauty_parlour'
+  ADD_BEAUTY_PARLOUR: environment.apiUrl + '/add_beauty_parlour',
+  GET_ALL_BEAUTY_SERVICES: environment.apiUrl + '/get_all_beauty_services'
 }

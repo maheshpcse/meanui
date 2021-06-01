@@ -68,3 +68,25 @@ textarea {
 .btn-action-cancel:hover {
   background-color: #aab5c0;
 }
+
+.label-title {
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.label-title .card-link {
+  cursor: pointer;
+  color: gray !important;
+  font-size: 1em;
+}
+
+input[type="checkbox"] {
+  font-size: 0.5em;
+  margin-left: -20px;
+}
+
+.isActive {
+  background-color: lightgray;
+}
