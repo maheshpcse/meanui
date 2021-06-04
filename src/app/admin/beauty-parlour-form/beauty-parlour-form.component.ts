@@ -21,6 +21,10 @@ export class BeautyParlourFormComponent implements OnInit {
   rating: any = null;
   service: any = null;
   subService: any = null;
+  selectDate: Date;
+  selectStartTime: Date;
+  selectEndTime: Date;
+  usersLimit: any = null;
   servicesList: any = [];
   subSerivcesObj: any = {};
   subServicesList: any = [];
@@ -37,6 +41,7 @@ export class BeautyParlourFormComponent implements OnInit {
   allSubServices: any = [];
   currentIndex: any = null;
   selectAll: any = [];
+  serviceIds: any = [];
 
   constructor(
     public router: Router,
@@ -50,7 +55,7 @@ export class BeautyParlourFormComponent implements OnInit {
     this.getAllBeautyServicesList();
     this.servicesSettings = {
       singleSelection: false,
-      text: "Select Services",
+      text: "Select Services :",
       selectAllText: "Select All",
       unSelectAllText: "UnSelect All",
       enableSearchFilter: true,
@@ -59,7 +64,7 @@ export class BeautyParlourFormComponent implements OnInit {
     };
     this.subServicesSettings = {
       singleSelection: false,
-      text: "Select Sub Services",
+      text: "Select Sub Services :",
       selectAllText: "Select All",
       unSelectAllText: "UnSelect All",
       enableSearchFilter: true,
@@ -97,6 +102,7 @@ export class BeautyParlourFormComponent implements OnInit {
             this.selectedSubServices.push([]);
             this.subSettings.push(this.subServicesSettings);
             this.selectAll.push(false);
+            this.serviceIds.push(Number(item));
           }
           console.log('all sub services isss', this.allSubServices);
         } else {
@@ -115,7 +121,7 @@ export class BeautyParlourFormComponent implements OnInit {
     console.log('selected checked isss', this.selectAll);
     this.subSettings[id] = {
       singleSelection: false,
-      text: "Select Sub Services",
+      text: "Select Sub Services :",
       selectAllText: "Select All",
       unSelectAllText: "UnSelect All",
       enableSearchFilter: true,
@@ -123,6 +129,19 @@ export class BeautyParlourFormComponent implements OnInit {
       badgeShowLimit: 2,
       disabled: !event
     };
+    if (event === false) {
+      this.subSettings[id] = {
+        singleSelection: false,
+        text: "Select Sub Services :",
+        selectAllText: "Select All",
+        unSelectAllText: "UnSelect All",
+        enableSearchFilter: true,
+        classes: "myclass custom-class",
+        badgeShowLimit: 2,
+        disabled: true
+      };
+      this.selectedSubServices[id] = [];
+    }
   }
 
   onCollapseBody(item: any, id: any) {
@@ -146,8 +165,8 @@ export class BeautyParlourFormComponent implements OnInit {
     console.log(items);
   }
   onDeSelectAllSerivce(items: any) {
-    this.subServicesList = [];
     console.log(items);
+    this.subServicesList = [];
   }
 
   // select and de-select sub services
@@ -170,13 +189,62 @@ export class BeautyParlourFormComponent implements OnInit {
     this.router.navigate(["/services"]);
   }
 
+  onInputEventStartTime() {
+    console.log(this.selectStartTime);
+    console.log(moment(this.selectStartTime).format('LTS'));
+    if (moment(this.selectEndTime).format('HH:MM:ss') < moment(this.selectStartTime).format('HH:MM:ss')) {
+      this.toastr.errorToastr('Please select start time and end time correctly');
+    }
+  }
+
+  onInputEventEndTime() {
+    console.log(this.selectEndTime);
+    console.log(moment(this.selectEndTime).format('LTS'));
+    if (moment(this.selectEndTime).format('HH:MM:ss') < moment(this.selectStartTime).format('HH:MM:ss')) {
+      this.toastr.errorToastr('Please select start time and end time correctly');
+    }
+  }
+
+  setDisableModal() {
+    if (!this.selectAll.includes(true)) {
+      return true;
+    } else if (moment(this.selectEndTime).format('HH:MM:ss') < moment(this.selectStartTime).format('HH:MM:ss')) {
+      return true;
+    } else {
+      let count: any = 0;
+      for (const item of this.selectedSubServices) {
+        if (item.length === 0) {
+          count += 1;
+        }
+      }
+      if (count === this.selectedSubServices.length) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  }
+
   saveBeautyParlourData() {
+    let id: any = 0;
+    const SERVICES: any = {};
+    for (const item of this.selectAll) {
+      if (item) {
+        SERVICES[this.serviceIds[id]] = _.pluck(this.selectedSubServices[id], 'sub_service_id');
+      }
+      id += 1;
+    }
+    console.log('all SERVICES isss', SERVICES);
     const beautyParlourPayload = {
       owner_id: Number(this.userId),
       beautician_name: this.beauticianName,
       experience: Number(this.experience),
       parlour_name: this.parlourName,
       law_firm_name: this.lawFirmName,
+      services: JSON.stringify(SERVICES),
+      start_time: moment(this.selectStartTime).format('HH:MM:ss'),
+      end_time: moment(this.selectEndTime).format('HH:MM:ss'),
+      users_limit: Number(this.usersLimit),
       place: this.parlourAddress,
       rating: Number(this.rating),
       status: 1,
@@ -213,5 +281,17 @@ export class BeautyParlourFormComponent implements OnInit {
     this.parlourAddress = null;
     this.rating = null;
     this.userId = null;
+    this.servicesList = [];
+    this.subSerivcesObj = {};
+    this.allSubServices = [];
+    this.selectedSubServices = [];
+    this.subSettings = [];
+    this.selectAll = [];
+    this.serviceIds = [];
+    this.selectDate = new Date();
+    this.selectStartTime = new Date();
+    this.selectEndTime = new Date();
+    this.usersLimit = null;
+    this.getAllBeautyServicesList();
   }
 }

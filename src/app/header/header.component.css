@@ -6,8 +6,13 @@
     background-color: #6495ED !important;
 }
 
-.active {
+.nav-item .nav-link {
+    /* border-left: 2px white solid; */
+}
+
+.is-active a {
     color: #ccc !important;
+    /* border-left: 2px #ccc solid !important; */
 }
 
 .nav-link {
@@ -16,4 +21,5 @@
 
 .logout-link {
     cursor: pointer;
+    border: 2px white solid !important;
 }

@@ -76,7 +76,21 @@
                                 (onSelectAll)="onSelectAllSubService($event)"
                                 (onDeSelectAll)="onDeSelectAllSubService($event)"></angular2-multiselect>
                         </div> -->
+                        <div class="form-group col-md-4">
+                            <label for="starttime">Start Time</label>
+                            <p-calendar class="form-control" [(ngModel)]="selectStartTime" [ngModelOptions]="{standalone: true}" [showIcon]="true" [timeOnly]="true" inputId="timeonly" placeholder="Select Start Time" (onSelect)="onInputEventStartTime()"></p-calendar>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="endtime">End Time</label>
+                            <p-calendar class="form-control" [(ngModel)]="selectEndTime" [ngModelOptions]="{standalone: true}" [showIcon]="true" [timeOnly]="true" inputId="timeonly" placeholder="Select End Time" (onSelect)="onInputEventEndTime()"></p-calendar>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="userslimit">User Appointments Limit</label>
+                            <input class="form-control" type="number" name="limitName" id="limitId"
+                                placeholder="Enter user appointments limit" [(ngModel)]="usersLimit" required>
+                        </div>
                         <div class="form-group col-md-12">
+                            <label for="service">Service Name</label>
                             <div id="accordion">
                                 <div class="card" *ngFor="let item of servicesList; let j=index;">
                                     <div class="card-header label-title" [ngClass]="{'isActive': selectAll[j] === true}">
@@ -87,10 +101,6 @@
                                     </div>
                                     <div id="collapseOne-{{j}}" class="collapse-{{j}}" data-parent="#accordion" [ngClass]="{'show': j===currentIndex}">
                                         <div class="card-body">
-                                            <!-- Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                            consequat. -->
                                             <angular2-multiselect class="form-control col-md-4" [data]="allSubServices[j]"
                                                 [(ngModel)]="selectedSubServices[j]" [ngModelOptions]="{standalone: true}"
                                                 [settings]="subSettings[j]" (onSelect)="onSubServiceSelect($event)"
@@ -107,7 +117,7 @@
                         <div class="form-group col-md-4">
                             <button class="btn btn-action-cancel" type="submit" (click)="onActionBack()">Cancel</button>
                             <button class="btn btn-action-add ml-2" type="submit" (click)="saveBeautyParlourData()"
-                                [disabled]="beautyParlourForm.invalid">Submit</button>
+                                [disabled]="beautyParlourForm.invalid || setDisableModal()">Submit</button>
                         </div>
                     </div>
                 </div>

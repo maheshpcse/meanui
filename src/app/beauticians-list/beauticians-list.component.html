@@ -65,10 +65,10 @@
                                     </div>
                                     <div class="form-group mt-3">
                                         <!-- <input type="text" class="form-control" name="time" id="timeid" placeholder="Select Time"> -->
-                                        <p-calendar [(ngModel)]="selectTime" [showIcon]="true" [timeOnly]="true" inputId="timeonly" placeholder="Select Time"></p-calendar>
+                                        <p-calendar [(ngModel)]="selectTime" [showIcon]="true" [timeOnly]="true" inputId="timeonly" placeholder="Select Time" (onSelect)="onInputEvent()"></p-calendar>
                                     </div>
                                     <div class="form-group mt-5">
-                                        <button class="btn btn-action col-md-9" type="submit" [disabled]="!selectDate || !selectTime" (click)="addBookingData()">Book Slot</button>
+                                        <button class="btn btn-action col-md-9" type="submit" [disabled]="!selectDate || !selectTime" data-toggle="modal" data-target="#bookAppModal" (click)="onActionBookSlot()">Book Slot</button>
                                     </div>
                                 </div>
                             </div>
@@ -93,6 +93,54 @@
                           </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- user book an appointment Modal -->
+<div class="modal fade" id="bookAppModal" tabindex="-1" role="dialog" aria-labelledby="bookAppModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title" id="bookAppModalLabel">Book appointment confirmation ?</h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="resetModal()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label for="service">Add Services</label>
+                            <div id="accordion">
+                                <div class="card" *ngFor="let item of servicesList; let j=index;">
+                                    <div class="card-header label-title" [ngClass]="{'isActive': selectAll[j] === true}">
+                                        <input class="form-control col-md-1" type="checkbox" name="serviceName-{{j}}" id="serviceId-{{j}}" (input)="onInputAction(item, j, $event.target.checked)" [checked]="selectAll[j]">
+                                        <a class="card-link" data-toggle="collapse" href="#collapseOne" (click)="onCollapseBody(item, j)">
+                                            {{ item | titlecase }}
+                                        </a>
+                                    </div>
+                                    <div id="collapseOne-{{j}}" class="collapse-{{j}}" data-parent="#accordion" [ngClass]="{'show': j===currentId}">
+                                        <div class="card-body">
+                                            <angular2-multiselect class="form-control col-md-4" [data]="allSubServices[j]"
+                                                [(ngModel)]="selectedSubServices[j]" [ngModelOptions]="{standalone: true}"
+                                                [settings]="subSettings[j]" (onSelect)="onSubServiceSelect($event)"
+                                                (onDeSelect)="OnSubServiceDeSelect($event)"
+                                                (onSelectAll)="onSelectAllSubService($event)"
+                                                (onDeSelectAll)="onDeSelectAllSubService($event)"></angular2-multiselect>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-action-cancel" data-dismiss="modal" (click)="resetModal()">Cancel</button>
+                <button type="button" class="btn btn-action-add" (click)="addBookingData()" [disabled]="setDisableModal()">Save</button>
             </div>
         </div>
     </div>

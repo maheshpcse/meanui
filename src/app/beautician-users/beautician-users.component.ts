@@ -161,6 +161,7 @@ export class BeauticianUsersComponent implements OnInit {
       booking_status: Number(this.selectStatus),
       user_id: Number(this.selectUser.user_id),
       date: moment(this.selectUser.date).format('YYYY-MM-DD'),
+      description: this.selectUser.services,
       issued_by: this.username
     }
     console.log('Post payload to update user status isss', statusPayload);

@@ -18,7 +18,7 @@ export class AddFormsComponent implements OnInit {
   onAddAction(view: any) {
     console.log('Select view isss', view);
     if (view === 'beautician') {
-      this.router.navigate(['/add-beautian']);
+      this.router.navigate(['/add-beautician']);
     } else if (view === 'beautyparlour') {
       this.router.navigate(['/add-beauty-parlour']);
     }

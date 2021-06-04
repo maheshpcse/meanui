@@ -184,3 +184,53 @@
   padding: 5px;
   width: 50px;
 }
+
+.btn-action-cancel {
+  cursor: pointer;
+  color: white;
+  background-color: #ccc;
+}
+
+.btn-action-cancel:hover {
+  color: white;
+  background-color: gray;
+}
+
+.btn-action-add {
+  cursor: pointer;
+  color: white;
+  background-color: #6495ed;
+}
+
+.btn-action-add:hover {
+  color: white;
+  background-color: #1667af;
+}
+
+label {
+  color: gray;
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+.label-title {
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.label-title .card-link {
+  cursor: pointer;
+  color: gray !important;
+  font-size: 1em;
+}
+
+input[type="checkbox"] {
+  font-size: 0.5em;
+  margin-left: -20px;
+}
+
+.isActive {
+  background-color: lightgray;
+}

@@ -59,7 +59,7 @@ const routes: Routes = [
     component: AddFormsComponent
   },
   {
-    path: 'add-beautian',
+    path: 'add-beautician',
     canActivate: [AuthGuardService],
     component: BeauticianFormComponent
   },

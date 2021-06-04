@@ -6,34 +6,34 @@
             <a class="nav-link" *ngIf="!authUserService.isLoggedIn()" [routerLink]="[item.path]">{{item.name}}</a>
             <a class="nav-link" *ngIf="authUserService.isLoggedIn()" [routerLink]="[item.path]">{{item.name}}</a>
         </li> -->
-        <li class="nav-item active" *ngIf="authUserService.isLoggedIn() && role == 'user'">
+        <li class="nav-item" [ngClass]="{'is-active': href === 'user-dashboard'}" *ngIf="authUserService.isLoggedIn() && role == 'user'">
             <a class="nav-link" [routerLink]="['/user-dashboard']">Home</a>
         </li>
-        <li class="nav-item active" *ngIf="authUserService.isLoggedIn() && role == 'user'">
+        <li class="nav-item" [ngClass]="{'is-active': href === 'beauticians'}" *ngIf="authUserService.isLoggedIn() && role == 'user'">
             <a class="nav-link" [routerLink]="['/beauticians']">Beauticians</a>
         </li>
-        <li class="nav-item active" *ngIf="authUserService.isLoggedIn() && role == 'user'">
+        <li class="nav-item" [ngClass]="{'is-active': href === 'reports'}" *ngIf="authUserService.isLoggedIn() && role == 'user'">
             <a class="nav-link" [routerLink]="['/reports']">Reports</a>
         </li>
-        <li class="nav-item active" *ngIf="authUserService.isLoggedIn() && role == 'admin'">
+        <li class="nav-item" [ngClass]="{'is-active': href === 'admin-dashboard'}" *ngIf="authUserService.isLoggedIn() && role == 'admin'">
             <a class="nav-link" [routerLink]="['/admin-dashboard']">Home</a>
         </li>
-        <li class="nav-item active" *ngIf="authUserService.isLoggedIn() && role == 'admin'">
+        <li class="nav-item" [ngClass]="{'is-active': href === 'services' || href === 'add-beautician' || href === 'add-beauty-parlour'}" *ngIf="authUserService.isLoggedIn() && role == 'admin'">
             <a class="nav-link" [routerLink]="['/services']">Services</a>
         </li>
-        <li class="nav-item active" *ngIf="authUserService.isLoggedIn() && role == 'beautician'">
+        <li class="nav-item" [ngClass]="{'is-active': href === 'beautician-dashboard'}" *ngIf="authUserService.isLoggedIn() && role == 'beautician'">
             <a class="nav-link" [routerLink]="['/beautician-dashboard']">Home</a>
         </li>
-        <li class="nav-item active" *ngIf="authUserService.isLoggedIn() && role == 'beautician'">
+        <li class="nav-item" [ngClass]="{'is-active': href === 'beautician-users'}" *ngIf="authUserService.isLoggedIn() && role == 'beautician'">
             <a class="nav-link" [routerLink]="['/beautician-users']">Appointments</a>
         </li>
-        <li class="nav-item" *ngIf="authUserService.isLoggedIn() && role == 'beautician'">
+        <li class="nav-item" [ngClass]="{'is-active': href === 'beautician-reports'}" *ngIf="authUserService.isLoggedIn() && role == 'beautician'">
             <a class="nav-link" [routerLink]="['/beautician-reports']">Reports</a>
         </li>
-        <li class="nav-item" *ngIf="!authUserService.isLoggedIn()">
+        <li class="nav-item" [ngClass]="{'is-active': href === 'login'}" *ngIf="!authUserService.isLoggedIn()">
             <a class="nav-link" [routerLink]="['/login']">Login</a>
         </li>
-        <li class="nav-item" *ngIf="!authUserService.isLoggedIn()">
+        <li class="nav-item" [ngClass]="{'is-active': href === 'signup'}" *ngIf="!authUserService.isLoggedIn()">
             <a class="nav-link" [routerLink]="['/signup']">Signup</a>
         </li>
         <li class="nav-item logout-link" *ngIf="authUserService.isLoggedIn()">
