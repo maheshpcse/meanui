@@ -12,10 +12,10 @@
                         </tr>
                     </thead>
                     <tbody class="table-body">
-                        <tr *ngFor="let item of tempArray; let i=index;" (click)="onViewBill(item, i)">
+                        <tr *ngFor="let item of reports; let i=index;" (click)="onViewBill(item, i)">
                             <td>{{ item.booking_id }}</td>
-                            <td>{{ item.beautician }}</td>
-                            <td>{{ item.date }}</td>
+                            <td>{{ item.beautician_name }}</td>
+                            <td>{{ item.date | date:'yyyy-MM-dd' }}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -23,16 +23,16 @@
             <div class="col-md-4" *ngIf="viewItem?.booking_id">
                 <div class="card bill-card p-3">
                     <div class="header-bill">
-                        <span class="bill-title text-center">{{viewItem?.beautician}} SPA Report</span>
+                        <span class="bill-title text-center">{{viewItem?.beautician_name}} SPA Report</span>
                         <span><i class="fa fa-cloud-download text-center" aria-hidden="false"></i></span>
                     </div>
                     <div class="body-bill mt-5">
-                        <p class="body-title">Mr.{{viewItem?.beautician}}</p>
+                        <p class="body-title">Mr.{{viewItem?.beautician_name}}</p>
                         <p class="mr-5">28</p>
-                        <p>{{viewItem?.date}}</p>
+                        <p>{{viewItem?.date | date:'yyyy-MM-dd'}}</p>
                     </div>
                     <div class="total-bill">
-                        <p class="text-center">Total: 1200</p>
+                        <p class="text-center">Total: {{viewItem?.amount}}</p>
                         <p class="sign-data">
                             <span class="sign text-center">Signature</span>
                             <span>Digitally verified.</span>

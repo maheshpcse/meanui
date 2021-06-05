@@ -21,6 +21,7 @@ export const APIURL = {
 
   // user reports API URL's
   GET_CHECKUP_DETAILS: environment.apiUrl + '/get_checkup_details',
+  GET_ALL_USER_REPORTS_BY_ID: environment.apiUrl + '/get_all_user_reports_by_id',
   ADD_REPORT: environment.apiUrl + '/add_report',
   UPDATE_CHECKUP: environment.apiUrl + '/update_checkup',
 

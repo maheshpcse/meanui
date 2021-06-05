@@ -302,6 +302,7 @@ export class BeauticiansListComponent implements OnInit {
       date: moment(this.selectDate).format("YYYY-MM-DD"),
       time: moment(this.selectTime).format("HH:MM:ss"),
       booking_status: 2,
+      users_limit: Number(this.viewItem.users_limit)
     };
     console.log("Post payload to add booking data isss", bookingPayload);
     
@@ -312,6 +313,8 @@ export class BeauticiansListComponent implements OnInit {
           this.toastr.successToastr(response.message);
           $('#bookAppModal').modal('hide');
           this.closeNav();
+          this.resetModal();
+          this.resetForm();
         } else {
           this.toastr.errorToastr(response.message);
           $('#bookAppModal').modal('show');
@@ -321,5 +324,10 @@ export class BeauticiansListComponent implements OnInit {
         this.toastr.errorToastr("Network failed, Please try again.");
       }
     );
+  }
+
+  resetForm() {
+    this.selectDate = null;
+    this.selectTime = null;
   }
 }
