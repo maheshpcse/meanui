@@ -24,7 +24,8 @@
 }
 
 .bill-card {
-  height: 220%;
+  height: 180%;
+  position: sticky;
   background-color: lightblue;
   border: none;
   border-radius: 20px;
@@ -55,9 +56,9 @@
   display: grid;
   justify-content: flex-end;
   align-items: center;
-  position:absolute;                 
-  bottom:0;                         
-  right: 0;  
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
 
 .sign-data {
@@ -109,6 +110,117 @@
   font-size: 0.9em;
 }
 
+.titles {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.titles p {
+  color: gray;
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+.width-50 {
+  width: 150px;
+}
+
+/* .width-100 {
+  width: 50px;
+} */
+
+.search-fields {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.btn-action-search {
+  cursor: pointer;
+  color: white;
+  background-color: #1667af;
+  padding: 5px;
+  width: 50px;
+}
+
+/* table pagination styles */
+.pagination_rounded,
+.pagination_square {
+  display: flex;
+  justify-content: center;
+  /* margin-left: 400px;
+  margin-top: 300px; */
+}
+
+.pagination_rounded ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pagination_rounded li:first-child {
+  margin-left: 0px;
+}
+
+.pagination_rounded ul li {
+  cursor: pointer;
+  float: left;
+  margin-left: 20px;
+}
+
+.pagination_rounded ul li a:hover {
+  background: #4285f4;
+  color: #fff;
+  border: 1px solid #4285f4;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+.pagination_rounded .prev {
+  margin-left: 0px !important;
+  border-radius: 35px !important;
+  width: 90px !important;
+  height: 34px !important;
+  line-height: 34px !important;
+}
+
+.pagination_rounded ul li a {
+  float: left;
+  color: #4285f4;
+  border-radius: 50%;
+  line-height: 30px;
+  height: 30px;
+  width: 30px;
+  text-align: center;
+  margin-bottom: 40px;
+  border: 1px solid #e0e0e0;
+}
+
+.pagination_rounded .prev i {
+  margin-right: 10px;
+}
+
+.pagination_rounded .next {
+  border-radius: 35px !important;
+  width: 90px !important;
+  height: 34px !important;
+  line-height: 34px !important;
+}
+
+.visible-xs {
+  display: none !important;
+}
+
+.isDisable {
+  cursor: default;
+  pointer-events: none;
+  opacity: 0.5;
+}
+/* end pagination styles */
+
 /* sidenav styles */
 .sidenav {
   height: 100%;
@@ -158,3 +270,4 @@
     font-size: 18px;
   }
 }
+/* end sidenav styles */

@@ -24,14 +24,16 @@ export class ReportsComponent implements OnInit {
     {booking_id: 'DPH2V-TTNVB-4X9Q3', beautician: 'NOP', date: '10-03-2021'}
   ];
   viewItem: any = {};
+  services: any = [];
   currentIndex: any = null;
 
-  rowsOnPage: any = 8;
-  limit: any = 8;
+  rowsOnPage: any = 10;
+  limit: any = 10;
   page: any = 1;
   count: any = 0;
   pager: any = {};
   totalPages: any = [];
+  temptotalPages: any = [];
   searchQuery: any = "";
   statusQuery: any = null;
   filterStatus: any = null;
@@ -65,6 +67,13 @@ export class ReportsComponent implements OnInit {
   onViewBill(item: any, index: any) {
     console.log('selected item and index issss', item, index);
     this.viewItem = item;
+    const tempArr = item.services.split(',');
+    for (const item of tempArr) {
+      this.services.push({
+        name: item,
+        amount: ''
+      });
+    }
   }
 
   getAllUserReports() {
@@ -118,9 +127,13 @@ export class ReportsComponent implements OnInit {
     endLimit = endLimit === 0 ? 1 : endLimit;
     console.log("end limit isss", endLimit);
     this.totalPages = [];
+    this.temptotalPages = [];
+    this.totalPages.push('Prev');
     for (let num = 1; num <= Number(endLimit); num += 1) {
       this.totalPages.push(num);
+      this.temptotalPages.push(num);
     }
+    this.totalPages.push('Next');
     console.log("total pages isss", this.totalPages);
   }
 

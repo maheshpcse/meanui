@@ -3,6 +3,23 @@
     <div class="container-fluid p-3">
         <div class="row mt-3">
             <div class="col-md-8">
+                <div class="titles">
+                    <p>All Booking Reports</p>
+                    <div class="search-fields">
+                        <select class="form-control width-50" name="statusName" id="statusId" [(ngModel)]="statusQuery" (change)="onSelectStatus()">
+                            <option value="null">All Status</option>
+                            <option value="1">Active</option>
+                            <option value="0">In Active</option>
+                        </select>
+                        <div class="form-group input-group ml-2">
+                            <input class="form-control width-100" type="text" name="searchName" id="searchId" placeholder="Quick search..." [(ngModel)]="searchQuery" (input)="onInputSearch()">
+                            <button class="btn btn-action-search" type="submit" (click)="onSearchData()">
+                                <i class="fa fa-search" aria-hidden="false" *ngIf="!searchQuery || searchQuery === ''"></i>
+                                <i class="fa fa-check" aria-hidden="false" *ngIf="searchQuery || searchQuery !== ''"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
                 <table class="table table-hover booking-table">
                     <thead class="thead-light table-head">
                         <tr>
@@ -18,6 +35,28 @@
                             <td>{{ item.date | date:'yyyy-MM-dd' }}</td>
                         </tr>
                     </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="3">
+                                <div class="pagination_rounded mt-5" *ngIf="reports.length !== 0">
+                                    <!-- <ul>
+                                        <li [ngClass]="{'isDisable': page === 1}" (click)="getPage(page - 1)"> <a href="#" class="prev"> <i class="fa fa-angle-left" aria-hidden="true"></i> Prev </a> </li>
+                                        <ul *ngFor="let item of totalPages; let i=index">
+                                            <li class="hidden-xs" [ngClass]="{'active': page === item}"
+                                            (click)="getPage(item)"><a href="#">{{item}}</a> </li>
+                                        </ul>
+                                        <li [ngClass]="{'isDisable': page === totalPages.length}" (click)="getPage(page + 1)"><a href="#" class="next"> Next <i class="fa fa-angle-right" aria-hidden="true"></i></a> </li>
+                                    </ul> -->
+                                    <ul *ngFor="let item of totalPages; let i=index">
+                                        <li [ngClass]="{'isDisable': page === 1}" (click)="getPage(page - 1)" *ngIf="item === 'Prev'"> <a class="prev"> <i class="fa fa-angle-left" aria-hidden="true"></i> Prev </a> </li>
+                                        <li class="hidden-xs" [ngClass]="{'active': page === item}"
+                                            (click)="getPage(item)" *ngIf="item !== 'Prev' && item !== 'Next'"><a>{{item}}</a> </li>
+                                        <li [ngClass]="{'isDisable': page === temptotalPages.length}" (click)="getPage(page + 1)" *ngIf="item === 'Next'"><a class="next"> Next <i class="fa fa-angle-right" aria-hidden="true"></i></a> </li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    </tfoot>
                 </table>
             </div>
             <div class="col-md-4" *ngIf="viewItem?.booking_id">
@@ -30,6 +69,25 @@
                         <p class="body-title">Mr.{{viewItem?.beautician_name}}</p>
                         <p class="mr-5">28</p>
                         <p>{{viewItem?.date | date:'yyyy-MM-dd'}}</p>
+                    </div>
+                    <div class="bill-details">
+                        <table class="table table-borderless">
+                            <thead>
+                                <tr>
+                                    <th>Service Name</th>
+                                    <th>Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of services; let i=index;">
+                                    <td>{{ item.name | titlecase }}</td>
+                                    <td>{{ item.amount | number:'1.2-2' }}</td>
+                                </tr>
+                                <tr *ngIf="services.length === 0">
+                                    <td class="text-center">No user reports found.</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                     <div class="total-bill">
                         <p class="text-center">Total: {{viewItem?.amount}}</p>
