@@ -28,6 +28,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { BeauticiansListComponent } from './beauticians-list/beauticians-list.component';
 import { BeauticianUsersComponent } from './beautician-users/beautician-users.component';
 import { BeauticianReportsComponent } from './beautician-reports/beautician-reports.component';
+import { BeautyServicesFormComponent } from './admin/beauty-services-form/beauty-services-form.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +47,8 @@ import { BeauticianReportsComponent } from './beautician-reports/beautician-repo
     NotFoundComponent,
     BeauticiansListComponent,
     BeauticianUsersComponent,
-    BeauticianReportsComponent
+    BeauticianReportsComponent,
+    BeautyServicesFormComponent
   ],
   imports: [
     BrowserModule,

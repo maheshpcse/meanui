@@ -38,6 +38,10 @@
   font-size: 1.3em;
 }
 
+.bill-download {
+  cursor: pointer;
+}
+
 .bill-title {
   font-size: 1em;
   text-shadow: 3px 4px 7px rgba(81, 67, 21, 0.8);
@@ -110,6 +114,7 @@
   font-size: 0.9em;
 }
 
+/* search and status fields css styles */
 .titles {
   display: flex;
   justify-content: space-between;
@@ -143,6 +148,7 @@
   padding: 5px;
   width: 50px;
 }
+/* end search and status fields css styles */
 
 /* table pagination styles */
 .pagination_rounded,

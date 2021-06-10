@@ -1,10 +1,10 @@
 <app-header></app-header>
-<div class="container">
+<div class="container" *ngIf="viewPage === 'form'">
     <div class="row mt-3">
         <div class="col-md-12">
             <div class="titles">
                 <p>Add Beautician</p>
-                <button class="btn btn-action" (click)="onActionBack()">
+                <button class="btn btn-action" (click)="onClickView('table')">
                     <i class="fa fa-angle-left"></i>
                     <span class="ml-2">Back</span>
                 </button>
@@ -46,11 +46,119 @@
                     <div class="row mt-5">
                         <div class="form-group col-md-4">
                             <button class="btn btn-action-cancel" type="submit" (click)="onActionBack()">Cancel</button>
-                            <button class="btn btn-action-add ml-2" type="submit" (click)="saveBeauticianData()" [disabled]="beauticianForm.invalid">Submit</button>
+                            <button class="btn btn-action-add ml-2" type="submit" (click)="saveBeauticianData()" [disabled]="beauticianForm.invalid">{{btnType | titlecase}}</button>
                         </div>
                     </div>
                 </div>
             </form>
+        </div>
+    </div>
+</div>
+<div class="container-fluid" *ngIf="viewPage === 'table'">
+    <div class="row mt-3">
+        <div class="col-md-12">
+            <div class="titles">
+                <div class="main-title">
+                    <p>Beauticians List</p>
+                    <span class="ml-3"><i class="fa fa-angle-right" aria-hidden="false"></i></span>
+                    <button class="btn btn-action-addnew ml-3" (click)="onClickView('form')">
+                        <i class="fa fa-plus" aria-hidden="false"></i> 
+                        <span class="ml-2">Add New</span>
+                    </button>
+                </div>
+                <div class="search-fields">
+                    <button class="btn btn-action-back mr-2" (click)="onActionBack()">
+                        <span><i class="fa fa-angle-left" aria-hidden="false"></i> Back</span>
+                    </button>
+                    <select class="form-control width-50" name="statusName" id="statusId" [(ngModel)]="statusQuery" (change)="onSelectStatus()">
+                        <option value="null">All Status</option>
+                        <option value="1">Active</option>
+                        <option value="0">In Active</option>
+                    </select>
+                    <div class="form-group input-group ml-2">
+                        <input class="form-control width-100" type="text" name="searchName" id="searchId" placeholder="Quick search..." [(ngModel)]="searchQuery" (input)="onInputSearch()">
+                        <button class="btn btn-action-search" type="submit" (click)="onSearchData()">
+                            <i class="fa fa-search" aria-hidden="false" *ngIf="!searchQuery || searchQuery === ''"></i>
+                            <i class="fa fa-check" aria-hidden="false" *ngIf="searchQuery || searchQuery !== ''"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <table class="table table-hover">
+                <thead class="thead-light table-head">
+                    <tr>
+                        <th>Full Name</th>
+                        <th>User Name</th>
+                        <th>Email Address</th>
+                        <th>Phone Number</th>
+                        <th>Status</th>
+                        <th class="text-center">Action</th>
+                    </tr>
+                </thead>
+                <tbody class="table-body">
+                    <tr *ngFor="let item of beauticians; let i=index;">
+                        <td>{{ item.fullname |titlecase }}</td>
+                        <td>{{ item.username | titlecase }}</td>
+                        <td>{{ item.email }}</td>
+                        <td>{{ item.mobile }}</td>
+                        <td class="bg-status">
+                            <span *ngIf="item.status === 1" class="is-active"><i class="fa fa-check-circle-o" aria-hidden="false"></i> Active</span>
+                            <span *ngIf="item.status === 0" class="is-inactive"><i class="fa fa-circle" aria-hidden="false"></i> Inactive</span>
+                        </td>
+                        <td class="text-center">
+                            <button class="btn btn-action-view" type="submit" *ngIf="item.status === 1" (click)="onClickAction(item, i, 'view')">
+                                <i class="fa fa-eye" aria-hidden="false"></i>
+                            </button>
+                            <button class="btn btn-action-update ml-2" type="submit" *ngIf="item.status === 1" (click)="onClickAction(item, i, 'update')">
+                                <i class="fa fa-pencil-square-o" aria-hidden="false"></i>
+                            </button>
+                            <button class="btn btn-action-delete ml-2" type="submit" *ngIf="item.status === 1" data-toggle="modal" data-target="#deleteRestore" (click)="onClickAction(item, i, 'delete')">
+                                <i class="fa fa-trash" aria-hidden="false"></i>
+                            </button>
+                            <button class="btn btn-action-restore" type="submit" *ngIf="item.status === 0" data-toggle="modal" data-target="#deleteRestore" (click)="onClickAction(item, i, 'restore')">
+                                <i class="fa fa-undo" aria-hidden="false"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="6">
+                            <div class="pagination_rounded mt-5" *ngIf="beauticians.length !== 0">
+                                <ul *ngFor="let item of totalPages; let i=index">
+                                    <li [ngClass]="{'isDisable': page === 1}" (click)="getPage(page - 1)" *ngIf="item === 'Prev'"> <a class="prev"> <i class="fa fa-angle-left" aria-hidden="true"></i> Prev </a> </li>
+                                    <li class="hidden-xs" [ngClass]="{'active': page === item}"
+                                        (click)="getPage(item)" *ngIf="item !== 'Prev' && item !== 'Next'"><a>{{item}}</a> </li>
+                                    <li [ngClass]="{'isDisable': page === temptotalPages.length}" (click)="getPage(page + 1)" *ngIf="item === 'Next'"><a class="next"> Next <i class="fa fa-angle-right" aria-hidden="true"></i></a> </li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- delete or restore beautician confirmation Modal -->
+<div class="modal fade" id="deleteRestore" tabindex="-1" role="dialog" aria-labelledby="deleteRestoreModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title" id="deleteRestoreModalLabel">{{ viewItem.status === 1 ? 'Delete' : 'Restore' }} beautician confirmation ?</h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure, you want to {{ viewItem.status === 1 ? 'delete' : 'restore' }} this beautician ?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-action-cancel" data-dismiss="modal">No</button>
+                <button type="button" class="btn btn-action-add" (click)="deleteRestoreBeautician()">Yes</button>
+            </div>
         </div>
     </div>
 </div>

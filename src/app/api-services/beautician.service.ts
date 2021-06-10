@@ -10,8 +10,8 @@ export class BeauticianService {
   constructor(private http: HttpClient) { }
 
   // user API services
-  getAllBeauticians(data: any) {
-    return this.http.post<any>(APIURL.GET_ALL_BEAUTICIANS, data);
+  getAllBeautyParlours(data: any) {
+    return this.http.post<any>(APIURL.GET_ALL_BEAUTY_PARLOURS, data);
   }
 
   getAllUserReportsById(data: any) {
@@ -31,12 +31,24 @@ export class BeauticianService {
     return this.http.get<any>(APIURL.GET_ALL_BEAUTY_SERVICES);
   }
 
+  getAllBeauticiansList(data: any) {
+    return this.http.post<any>(APIURL.GET_ALL_BEAUTICIANS, data);
+  }
+
   addBeautician(data: any) {
     return this.http.post<any>(APIURL.ADD_BEAUTICIAN, data);
   }
 
+  deleteRestoreBeauticianById(data: any) {
+    return this.http.post<any>(APIURL.DELETE_RESTORE_BEAUTICIAN_BY_ID, data);
+  }
+
   addBeautyParlour(data: any) {
     return this.http.post<any>(APIURL.ADD_BEAUTY_PARLOUR, data);
+  }
+
+  addBeautyServices(data: any) {
+    return this.http.post<any>(APIURL.ADD_BEAUTY_SERVICES, data);
   }
 
   // beautician API Services

@@ -29,7 +29,7 @@ export class BeauticiansListComponent implements OnInit {
   searchQuery: any = "";
   statusQuery: any = null;
   filterStatus: any = null;
-  beauticians: any = [];
+  beautyParlours: any = [];
 
   service: any = null;
   subService: any = null;
@@ -91,7 +91,7 @@ export class BeauticiansListComponent implements OnInit {
         exp: i,
       });
     }
-    this.getAllBeauticiansData();
+    this.getAllBeautyParloursData();
     this.servicesSettings = {
       singleSelection: false,
       text: "Select Services :",
@@ -127,7 +127,7 @@ export class BeauticiansListComponent implements OnInit {
     document.getElementById("main").style.marginRight = "0";
   }
 
-  getAllBeauticiansData() {
+  getAllBeautyParloursData() {
     const beauticianPayload = {
       limit: Number(this.limit),
       page: Number(this.page),
@@ -142,11 +142,11 @@ export class BeauticiansListComponent implements OnInit {
       beauticianPayload
     );
 
-    this.beauticianService.getAllBeauticians(beauticianPayload).subscribe(
+    this.beauticianService.getAllBeautyParlours(beauticianPayload).subscribe(
       (response: any) => {
         console.log("Get all beauticians response isss", response);
         if (response.success) {
-          this.beauticians = response.data;
+          this.beautyParlours = response.data;
           this.count = response.count;
           this.createPager();
         } else {
@@ -162,12 +162,12 @@ export class BeauticiansListComponent implements OnInit {
   getPage(event: any) {
     console.log("Selected page isss", event);
     this.page = Number(event);
-    this.getAllBeauticiansData();
+    this.getAllBeautyParloursData();
   }
 
   createPager() {
-    // this.pager.startCount = this.beauticians.length > 0 && Number(this.page) === 1 ? 1 : this.beauticians.length > 0 ? (Number(this.rowsOnPage) * Number(this.page - 1)) + 1 : 0;
-    // this.pager.endCount = Number(this.rowsOnPage) === this.beauticians.length ? Number(this.rowsOnPage) * Number(this.page) : Number(this.count);
+    // this.pager.startCount = this.beautyParlours.length > 0 && Number(this.page) === 1 ? 1 : this.beautyParlours.length > 0 ? (Number(this.rowsOnPage) * Number(this.page - 1)) + 1 : 0;
+    // this.pager.endCount = Number(this.rowsOnPage) === this.beautyParlours.length ? Number(this.rowsOnPage) * Number(this.page) : Number(this.count);
     // console.log(this.pager);
 
     let endLimit =
@@ -265,18 +265,18 @@ export class BeauticiansListComponent implements OnInit {
   onSearchData() {
     // console.log('search request data isss', this.searchQuery);
     if (this.searchQuery || this.searchQuery !== "") {
-      this.getAllBeauticiansData();
+      this.getAllBeautyParloursData();
     }
   }
 
   onInputSearch() {
     if (!this.searchQuery || this.searchQuery === "") {
-      this.getAllBeauticiansData();
+      this.getAllBeautyParloursData();
     }
   }
 
   onSelectStatus() {
-    this.getAllBeauticiansData();
+    this.getAllBeautyParloursData();
   }
 
   onInputEvent() {

@@ -21,6 +21,8 @@ export class AddFormsComponent implements OnInit {
       this.router.navigate(['/add-beautician']);
     } else if (view === 'beautyparlour') {
       this.router.navigate(['/add-beauty-parlour']);
+    } else if (view === 'beautyservices') {
+      this.router.navigate(['/add-beauty-services']);
     }
   }
 

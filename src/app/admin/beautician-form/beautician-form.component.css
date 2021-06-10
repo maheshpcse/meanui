@@ -1,3 +1,4 @@
+/* search and status fields css styles */
 .titles {
   display: flex;
   justify-content: space-between;
@@ -5,10 +6,229 @@
 }
 
 .titles p {
-  font-size: 1.2em;
   color: gray;
+  font-size: 1.1em;
+  font-weight: bold;
 }
 
+.width-50 {
+  width: 150px;
+}
+
+.width-100 {
+  height: 40px !important;
+}
+
+.search-fields {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.btn-action-search {
+  cursor: pointer;
+  color: white;
+  background-color: #1667af;
+  padding: 5px;
+  width: 50px;
+}
+/* end search and status fields css styles */
+
+/* table css styles starts */
+.main-title {
+  display: flex;
+  justify-content: space-around;
+  align-items: baseline;
+}
+
+.btn-action-addnew {
+  background-color: #bfcbd6;
+}
+
+.btn-action-addnew:hover {
+  background-color: #aab5c0;
+}
+
+.btn-action-back {
+  background-color: #bfcbd6;
+  width: 100px;
+}
+
+.btn-action-back:hover {
+  background-color: #aab5c0;
+}
+
+.table-head tr th {
+  color: #6495ed;
+  font-size: 1em;
+  font-weight: 600;
+}
+
+.table-body tr td {
+  color: gray;
+  font-weight: lighter;
+  font-size: 0.9em;
+  font-weight: 600;
+}
+
+/* .table-body tr td:hover {
+  color: crimson;
+} */
+
+.bg-status .is-active {
+  color: forestgreen;
+}
+
+.bg-status .is-inactive {
+  color: crimson;
+}
+
+.btn-action-view {
+  color: white;
+  border: 1px solid #6495ed;
+  background-color: #6495ed;
+}
+
+.btn-action-view:hover {
+  background-color: #1667af;
+}
+
+.btn-action-update {
+  color: white;
+  border: 1px solid #aab5c0;
+  background-color: #aab5c0;
+}
+
+.btn-action-update:hover {
+  background-color: gray;
+}
+
+.btn-action-delete {
+  color: white;
+  border: 1px solid lightcoral;
+  background-color: lightcoral;
+}
+
+.btn-action-delete:hover {
+  background-color: crimson;
+}
+
+.btn-action-restore {
+  color: white;
+  border: 1px solid lightgreen;
+  background-color: lightgreen;
+}
+
+.btn-action-restore:hover {
+  background-color: forestgreen;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -60px;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+/* end table css styles starts */
+
+/* table pagination styles */
+.pagination_rounded,
+.pagination_square {
+  display: flex;
+  justify-content: center;
+  /* margin-left: 400px;
+  margin-top: 300px; */
+}
+
+.pagination_rounded ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pagination_rounded li:first-child {
+  margin-left: 0px;
+}
+
+.pagination_rounded ul li {
+  cursor: pointer;
+  float: left;
+  margin-left: 20px;
+}
+
+.pagination_rounded ul li a:hover {
+  background: #4285f4;
+  color: #fff;
+  border: 1px solid #4285f4;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+.pagination_rounded .prev {
+  margin-left: 0px !important;
+  border-radius: 35px !important;
+  width: 90px !important;
+  height: 34px !important;
+  line-height: 34px !important;
+}
+
+.pagination_rounded ul li a {
+  float: left;
+  color: #4285f4;
+  border-radius: 50%;
+  line-height: 30px;
+  height: 30px;
+  width: 30px;
+  text-align: center;
+  margin-bottom: 40px;
+  border: 1px solid #aab5c0;
+  text-decoration: none;
+}
+
+.pagination_rounded .prev i {
+  margin-right: 10px;
+}
+
+.pagination_rounded .next {
+  border-radius: 35px !important;
+  width: 90px !important;
+  height: 34px !important;
+  line-height: 34px !important;
+}
+
+.visible-xs {
+  display: none !important;
+}
+
+.isDisable {
+  cursor: default;
+  pointer-events: none;
+  opacity: 0.5;
+}
+/* end pagination styles */
+
+/* add form css styles starts */
 .btn-action {
   background-color: #bfcbd6;
 }
@@ -61,3 +281,28 @@ input[type="file"] {
 .btn-action-cancel:hover {
   background-color: #aab5c0;
 }
+/* end add form css styles starts */
+
+/* modal css styles starts */
+.btn-action-cancel {
+  cursor: pointer;
+  color: white;
+  background-color: #ccc;
+}
+
+.btn-action-cancel:hover {
+  color: white;
+  background-color: gray;
+}
+
+.btn-action-add {
+  cursor: pointer;
+  color: white;
+  background-color: #6495ed;
+}
+
+.btn-action-add:hover {
+  color: white;
+  background-color: #1667af;
+}
+/* end modal css styles starts */

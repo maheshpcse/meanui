@@ -1,0 +1,62 @@
+<app-header></app-header>
+<div class="container">
+    <div class="row mt-3">
+        <div class="col-md-12">
+            <div class="titles">
+                <p>Add Beauty Parlour Services</p>
+                <button class="btn btn-action" (click)="onActionBack()">
+                    <i class="fa fa-angle-left"></i>
+                    <span class="ml-2">Back</span>
+                </button>
+            </div>
+            <hr>
+        </div>
+        <div class="col-md-12">
+            <form #beautyServiceForm="ngForm">
+                <div class="container">
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label for="servicename">Service Name</label>
+                            <input class="form-control" type="text" name="servicename" id="servicenameId" placeholder="Enter service name" [(ngModel)]="serviceName" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form [formGroup]="beautySubServiceForm" enctype="multipart/form-data" method="POST">
+                                <div formArrayName="serivcesArr">
+                                    <div class="row" *ngFor="let item of beautySubServiceForm['controls']['serivcesArr']['controls']; let i=index"
+                                    [formGroupName]="i">
+                                        <div class="form-group col-md-6">
+                                            <label for="subservicename">Sub Service Name</label>
+                                            <input class="form-control" type="text" name="subservicename" id="subservicenameId" placeholder="Enter sub service name" formControlName="subServiceName" required>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="subserviceamount">Sub Service Amount</label>
+                                            <input class="form-control" type="number" name="subserviceamount" id="subserviceamountId" placeholder="Enter sub service amount" formControlName="subServiceAmount" required>
+                                        </div>
+                                        <div class="form-group input-group col-md-2">
+                                            <button class="btn btn-action-plus ml-2" type="submit" *ngIf="beautySubServiceForm['controls']['serivcesArr']['controls'].length <= i+1"
+                                            (click)="addForm(i)">
+                                                <i class="fa fa-plus" aria-hidden="false"></i>
+                                            </button>
+                                            <button class="btn btn-action-minus ml-2" type="submit" *ngIf="beautySubServiceForm['controls']['serivcesArr']['controls'].length > 1"
+                                                (click)="removeForm(i)">
+                                                <i class="fa fa-minus" aria-hidden="false"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row mt-5">
+                        <div class="form-group col-md-4">
+                            <button class="btn btn-action-cancel" type="submit" (click)="onActionBack()">Cancel</button>
+                            <button class="btn btn-action-add ml-2" type="submit" (click)="saveBeauticianData()" [disabled]="(!serviceName || serviceName === '') || beautySubServiceForm.invalid">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -67,6 +67,7 @@ export class ReportsComponent implements OnInit {
   onViewBill(item: any, index: any) {
     console.log('selected item and index issss', item, index);
     this.viewItem = item;
+    this.services = [];
     const tempArr = item.services.split(',');
     for (const item of tempArr) {
       this.services.push({

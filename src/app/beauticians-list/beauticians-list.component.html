@@ -22,7 +22,7 @@
                 </div>
                 <hr>
                 <div class="row" id="main">
-                    <div class="col-md-3" *ngFor="let item of beauticians;let i=index">
+                    <div class="col-md-3" *ngFor="let item of beautyParlours;let i=index">
                         <div class="card beauty-card" (click)="openNav(item, i)" [ngClass]="{'active-card': i + 1 == currentIndex && currentIndex + 1}">
                             <span class="active-status mr-3 mt-2" *ngIf="item.status === 1"><i class="fa fa-circle" aria-hidden="false"></i></span>
                             <span class="inactive-status mr-3 mt-2" *ngIf="item.status === 0"><i class="fa fa-circle" aria-hidden="false"></i></span>
@@ -77,7 +77,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="pagination" *ngIf="beauticians.length !== 0">
+                        <div class="pagination" *ngIf="beautyParlours.length !== 0">
                             <!-- <a>&laquo; Prev</a>
                             <a class="active">1</a>
                             <a>2</a>

@@ -6,6 +6,7 @@ import { AddFormsComponent } from './admin/add-forms/add-forms.component';
 import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
 import { BeauticianFormComponent } from './admin/beautician-form/beautician-form.component';
 import { BeautyParlourFormComponent } from './admin/beauty-parlour-form/beauty-parlour-form.component';
+import { BeautyServicesFormComponent } from './admin/beauty-services-form/beauty-services-form.component';
 import { AuthGuardService } from './api-services/auth-guard.service';
 import { BeauticianDashboardComponent } from './beautician-dashboard/beautician-dashboard.component';
 import { BeauticianReportsComponent } from './beautician-reports/beautician-reports.component';
@@ -67,6 +68,11 @@ const routes: Routes = [
     path: 'add-beauty-parlour',
     canActivate: [AuthGuardService],
     component: BeautyParlourFormComponent
+  },
+  {
+    path: 'add-beauty-services',
+    canActivate: [AuthGuardService],
+    component: BeautyServicesFormComponent
   },
   // BEAUTICIAN routes
   {

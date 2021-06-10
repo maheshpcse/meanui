@@ -18,7 +18,7 @@
         <li class="nav-item" [ngClass]="{'is-active': href === 'admin-dashboard'}" *ngIf="authUserService.isLoggedIn() && role == 'admin'">
             <a class="nav-link" [routerLink]="['/admin-dashboard']">Home</a>
         </li>
-        <li class="nav-item" [ngClass]="{'is-active': href === 'services' || href === 'add-beautician' || href === 'add-beauty-parlour'}" *ngIf="authUserService.isLoggedIn() && role == 'admin'">
+        <li class="nav-item" [ngClass]="{'is-active': href === 'services' || href === 'add-beautician' || href === 'add-beauty-parlour' || href === 'add-beauty-services'}" *ngIf="authUserService.isLoggedIn() && role == 'admin'">
             <a class="nav-link" [routerLink]="['/services']">Services</a>
         </li>
         <li class="nav-item" [ngClass]="{'is-active': href === 'beautician-dashboard'}" *ngIf="authUserService.isLoggedIn() && role == 'beautician'">
