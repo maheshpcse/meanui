@@ -85,7 +85,7 @@
                 </div>
             </div>
             <hr>
-            <table class="table table-hover">
+            <table class="table table-hover" id="main">
                 <thead class="thead-light table-head">
                     <tr>
                         <th>Full Name</th>
@@ -98,7 +98,10 @@
                 </thead>
                 <tbody class="table-body">
                     <tr *ngFor="let item of beauticians; let i=index;">
-                        <td>{{ item.fullname |titlecase }}</td>
+                        <td class="table-profile">
+                            <img src="../../../assets/images/admin-avatar.png" alt="_profilepic" class="img-responsive rounded-image" width="50" height="50">
+                            <span class="ml-2">{{ item.fullname |titlecase }}</span>
+                        </td>
                         <td>{{ item.username | titlecase }}</td>
                         <td>{{ item.email }}</td>
                         <td>{{ item.mobile }}</td>
@@ -137,6 +140,45 @@
                     </tr>
                 </tfoot>
             </table>
+        </div>
+        <div class="col-md-12">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+                <p class="text-center add-user-title">View Beautician Details</p>
+                <hr>
+                <div class="profile-details">
+                    <img src="../../../assets/images/admin-avatar.png" alt="_profile" class="img-responsive rounded-image text-center" width="100" height="100">
+                    <p class="p1 text-center mt-3">{{ viewItem?.fullname | titlecase }}</p>
+                    <p class="p2 text-center">{{ viewItem?.username }}</p>
+                </div>
+                <hr>
+                <div>
+                    <table class="table table-borderless personal-details">
+                        <thead>
+                            <tr class="tr1">
+                                <th><i class="fa fa-envelope" aria-hidden="false"></i></th>
+                                <th class="th1">Email</th>
+                                <td>{{ viewItem?.email }}</td>
+                            </tr>
+                            <tr class="tr2">
+                                <th><i class="fa fa-mobile" aria-hidden="false"></i></th>
+                                <th class="th1">Mobile</th>
+                                <td>{{ viewItem?.mobile }}</td>
+                            </tr>
+                            <tr class="tr3">
+                                <th><i class="fa fa-user-secret" aria-hidden="false"></i></th>
+                                <th class="th1">Role</th>
+                                <td>{{ viewItem?.role | uppercase }}</td>
+                            </tr>
+                            <tr class="tr4">
+                                <th><i class="fa fa-exclamation-circle" aria-hidden="false"></i></th>
+                                <th class="th1">Status</th>
+                                <td>{{ viewItem?.status === 0 ? 'Active' : 'Inactive' }}</td>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 </div>

@@ -29,6 +29,7 @@ export class BeauticianFormComponent implements OnInit {
   viewItem: any = {};
   public viewPage: any = 'table';
   public btnType: any = 'submit';
+  currentIndex: any = null;
 
   rowsOnPage: any = 10;
   limit: any = 10;
@@ -61,6 +62,20 @@ export class BeauticianFormComponent implements OnInit {
     console.log('Selected view isss', view);
     this.viewPage = view;
     this.resetForm();
+  }
+
+  openNav(item?: any, index?: any) {
+    this.viewItem = item;
+    this.currentIndex = index + 1;
+    document.getElementById("mySidenav").style.width = "400px";
+    document.getElementById("main").style.marginRight = "250px";
+  }
+
+  closeNav() {
+    this.viewItem = {};
+    this.currentIndex = null;
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("main").style.marginRight = "0";
   }
 
   getAllBeauticiansList() {
@@ -161,6 +176,8 @@ export class BeauticianFormComponent implements OnInit {
       this.passWord = item.password;
       this.mobileNumber = Number(item.mobile);
       this.profileImage = item.profile;
+    } else if (config === 'view') {
+      this.openNav(item, id);
     }
   }
 
