@@ -29,6 +29,10 @@ import { BeauticiansListComponent } from './beauticians-list/beauticians-list.co
 import { BeauticianUsersComponent } from './beautician-users/beautician-users.component';
 import { BeauticianReportsComponent } from './beautician-reports/beautician-reports.component';
 import { BeautyServicesFormComponent } from './admin/beauty-services-form/beauty-services-form.component';
+import { AdminProfileComponent } from './admin/admin-profile/admin-profile.component';
+import { AdminSettingsComponent } from './admin/admin-settings/admin-settings.component';
+import { UserProfileComponent } from './user/user-profile/user-profile.component';
+import { BeauticianProfileComponent } from './beautician/beautician-profile/beautician-profile.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +52,11 @@ import { BeautyServicesFormComponent } from './admin/beauty-services-form/beauty
     BeauticiansListComponent,
     BeauticianUsersComponent,
     BeauticianReportsComponent,
-    BeautyServicesFormComponent
+    BeautyServicesFormComponent,
+    AdminProfileComponent,
+    AdminSettingsComponent,
+    UserProfileComponent,
+    BeauticianProfileComponent
   ],
   imports: [
     BrowserModule,

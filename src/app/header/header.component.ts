@@ -25,6 +25,8 @@ export class HeaderComponent implements OnInit {
 
   public href: any = '';
   public userid: any = sessionStorage.getItem('userid');
+  public fullName: any = sessionStorage.getItem('fullname');
+  public userName: any = sessionStorage.getItem('username');
   public role: any = sessionStorage.getItem('role');
 
   constructor(
@@ -42,6 +44,15 @@ export class HeaderComponent implements OnInit {
     localStorage.clear();
     sessionStorage.clear();
     this.router.navigate(['/login']);
+  }
+
+  onClickView(view: any) {
+    console.log('Selected view isss', view);
+    if (view === 'profile') {
+      this.router.navigate([`/${this.role}-profile`]);
+    } else if (view === 'settings') {
+      this.router.navigate([`/${this.role}-settings`]);
+    }
   }
 
 }

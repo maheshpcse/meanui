@@ -6,28 +6,37 @@
             <a class="nav-link" *ngIf="!authUserService.isLoggedIn()" [routerLink]="[item.path]">{{item.name}}</a>
             <a class="nav-link" *ngIf="authUserService.isLoggedIn()" [routerLink]="[item.path]">{{item.name}}</a>
         </li> -->
-        <li class="nav-item" [ngClass]="{'is-active': href === 'user-dashboard'}" *ngIf="authUserService.isLoggedIn() && role == 'user'">
+        <li class="nav-item" [ngClass]="{'is-active': href === 'user-dashboard'}"
+            *ngIf="authUserService.isLoggedIn() && role == 'user'">
             <a class="nav-link" [routerLink]="['/user-dashboard']">Home</a>
         </li>
-        <li class="nav-item" [ngClass]="{'is-active': href === 'beauticians'}" *ngIf="authUserService.isLoggedIn() && role == 'user'">
+        <li class="nav-item" [ngClass]="{'is-active': href === 'beauticians'}"
+            *ngIf="authUserService.isLoggedIn() && role == 'user'">
             <a class="nav-link" [routerLink]="['/beauticians']">Beauticians</a>
         </li>
-        <li class="nav-item" [ngClass]="{'is-active': href === 'reports'}" *ngIf="authUserService.isLoggedIn() && role == 'user'">
+        <li class="nav-item" [ngClass]="{'is-active': href === 'reports'}"
+            *ngIf="authUserService.isLoggedIn() && role == 'user'">
             <a class="nav-link" [routerLink]="['/reports']">Reports</a>
         </li>
-        <li class="nav-item" [ngClass]="{'is-active': href === 'admin-dashboard'}" *ngIf="authUserService.isLoggedIn() && role == 'admin'">
+        <li class="nav-item" [ngClass]="{'is-active': href === 'admin-dashboard'}"
+            *ngIf="authUserService.isLoggedIn() && role == 'admin'">
             <a class="nav-link" [routerLink]="['/admin-dashboard']">Home</a>
         </li>
-        <li class="nav-item" [ngClass]="{'is-active': href === 'services' || href === 'add-beautician' || href === 'add-beauty-parlour' || href === 'add-beauty-services'}" *ngIf="authUserService.isLoggedIn() && role == 'admin'">
+        <li class="nav-item"
+            [ngClass]="{'is-active': href === 'services' || href === 'add-beautician' || href === 'add-beauty-parlour' || href === 'add-beauty-services'}"
+            *ngIf="authUserService.isLoggedIn() && role == 'admin'">
             <a class="nav-link" [routerLink]="['/services']">Services</a>
         </li>
-        <li class="nav-item" [ngClass]="{'is-active': href === 'beautician-dashboard'}" *ngIf="authUserService.isLoggedIn() && role == 'beautician'">
+        <li class="nav-item" [ngClass]="{'is-active': href === 'beautician-dashboard'}"
+            *ngIf="authUserService.isLoggedIn() && role == 'beautician'">
             <a class="nav-link" [routerLink]="['/beautician-dashboard']">Home</a>
         </li>
-        <li class="nav-item" [ngClass]="{'is-active': href === 'beautician-users'}" *ngIf="authUserService.isLoggedIn() && role == 'beautician'">
+        <li class="nav-item" [ngClass]="{'is-active': href === 'beautician-users'}"
+            *ngIf="authUserService.isLoggedIn() && role == 'beautician'">
             <a class="nav-link" [routerLink]="['/beautician-users']">Appointments</a>
         </li>
-        <li class="nav-item" [ngClass]="{'is-active': href === 'beautician-reports'}" *ngIf="authUserService.isLoggedIn() && role == 'beautician'">
+        <li class="nav-item" [ngClass]="{'is-active': href === 'beautician-reports'}"
+            *ngIf="authUserService.isLoggedIn() && role == 'beautician'">
             <a class="nav-link" [routerLink]="['/beautician-reports']">Reports</a>
         </li>
         <li class="nav-item" [ngClass]="{'is-active': href === 'login'}" *ngIf="!authUserService.isLoggedIn()">
@@ -38,6 +47,38 @@
         </li>
         <li class="nav-item logout-link" *ngIf="authUserService.isLoggedIn()">
             <a class="nav-link" (click)="userLogout()">Logout</a>
+        </li>
+        <li class="nav-item" *ngIf="authUserService.isLoggedIn()">
+            <a class="nav-link">
+                <div class="dropdown">
+                    <!-- <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Dropdown button
+                    </button> -->
+                    <img src="../../assets/images/admin-avatar.png" alt="_profile" class="img-responsive rounded-image dropdown-toggle" type="button"
+                        id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                        width="30" height="30">
+                    <div class="dropdown-menu dropdown-menu-right p-0" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item">
+                            <div class="div1">
+                                <img src="../../assets/images/admin-avatar.png" alt="_pic" class="img-responsive rounded-image" width="60" height="60">
+                                <div class="div2 ml-2">
+                                    <p class="p1 mt-3">{{fullName}}</p>
+                                    <p class="p2">{{userName}}</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a class="dropdown-item link" (click)="onClickView('profile')">
+                            <i class="fa fa-user-o" aria-hidden="false"></i><span class="ml-2">My Profile</span>
+                        </a>
+                        <a class="dropdown-item" (click)="onClickView('settings')" *ngIf="authUserService.isLoggedIn() && role == 'admin'">
+                            <i class="fa fa-gear" aria-hidden="false"></i><span class="ml-2">Settings</span>
+                        </a>
+                        <a class="dropdown-item" (click)="userLogout()">
+                            <i class="fa fa-sign-out" aria-hidden="false"></i><span class="ml-2">Logout</span>
+                        </a>
+                    </div>
+                </div>
+            </a>
         </li>
     </ul>
 </nav>

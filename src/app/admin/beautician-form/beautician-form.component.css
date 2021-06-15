@@ -191,6 +191,12 @@ a:link {
   text-decoration: none;
 }
 
+.pagination_rounded ul .hidden-xs a {
+  background: #4285f4;
+  color: #fff;
+  border: 1px solid #4285f4;
+}
+
 .pagination_rounded .prev {
   margin-left: 0px !important;
   border-radius: 35px !important;
@@ -243,6 +249,14 @@ a:link {
   background-color: #aab5c0;
 }
 
+.para1 {
+  color: #aab5c0; 
+  font-size: 1.1em;
+  font-weight: bold;
+  border-left: 3px solid #6495ED;
+  padding: 5px;
+}
+
 label {
   color: gray;
   font-size: 1.1em;
@@ -254,6 +268,13 @@ input[type="email"],
 input[type="password"],
 input[type="number"],
 input[type="file"] {
+  height: 50px;
+  padding: 10px;
+  font-size: 1em;
+  color: gray;
+}
+
+.select {
   height: 50px;
   padding: 10px;
   font-size: 1em;
@@ -286,6 +307,28 @@ input[type="file"] {
 
 .btn-action-cancel:hover {
   background-color: #aab5c0;
+}
+
+.label-title {
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.label-title .card-link {
+  cursor: pointer;
+  color: gray !important;
+  font-size: 1em;
+}
+
+input[type="checkbox"] {
+  font-size: 0.5em;
+  margin-left: -20px;
+}
+
+.isActive {
+  background-color: lightgray;
 }
 /* end add form css styles starts */
 
@@ -359,20 +402,78 @@ input[type="file"] {
   font-size: 0.8em;
 }
 
-.personal-details thead tr {
-  display: flex;
-  align-items: baseline;
-  padding: 5px;
-}
-
-.personal-details thead tr th {
-  text-align: center;
-  padding: 5px;
-}
-
-.personal-details thead tr td {
+.table-data tbody .tr1 td {
   color: #6495ed;
   font-size: 0.9em;
+}
+
+.table-data tbody .tr2 td {
+  color: #aab5c0;
+  font-size: 0.9em;
+}
+
+.table-data tbody .tr3 td {
+  color: #aab5c0;
+  font-size: 0.9em;
+}
+
+.table-data tbody .tr4 td {
+  color: #aab5c0;
+  font-size: 0.9em;
+}
+
+.table-data tbody .tr5 td {
+  color: #aab5c0;
+  font-size: 0.9em;
+}
+
+.table-data tbody .tr6 td {
+  color: #aab5c0;
+  font-size: 0.9em;
+}
+
+.table-data tbody .tr7 td {
+  color: #aab5c0;
+  font-size: 0.9em;
+}
+
+.checked {
+  color: orange;
+}
+
+.para2, .para3 {
+  color: lightcoral;
+  font-weight: bold;
+  border-left: 3px solid #6495ED;
+  padding: 5px;
+}
+
+.div2 span {
+  color: #aab5c0;
+  /* background-color: #6495ED; */
+  border: 1px solid #aab5c0;
+  border-radius: 10px;
+  font-size: 1em;
+  padding: 5px;
+}
+
+.div2 span:hover {
+  color: white;
+  background-color: #bfcbd6;
+}
+
+.div2 ul li {
+  color: #aab5c0;
+  /* background-color: #6495ED; */
+  border: 1px solid #aab5c0;
+  border-radius: 10px;
+  font-size: 1em;
+  padding: 5px;
+}
+
+.div2 ul li:hover {
+  color: white;
+  background-color: #bfcbd6;
 }
 
 #main {

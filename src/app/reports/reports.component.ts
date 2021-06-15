@@ -25,6 +25,7 @@ export class ReportsComponent implements OnInit {
   ];
   viewItem: any = {};
   services: any = [];
+  amounts: any = [];
   currentIndex: any = null;
 
   rowsOnPage: any = 10;
@@ -68,12 +69,16 @@ export class ReportsComponent implements OnInit {
     console.log('selected item and index issss', item, index);
     this.viewItem = item;
     this.services = [];
+    this.amounts = [];
     const tempArr = item.services.split(',');
+    const tempArr1 = item.amounts.split(',');
+    let id: any = 0;
     for (const item of tempArr) {
       this.services.push({
         name: item,
-        amount: ''
+        amount: tempArr1[id]
       });
+      id += 1;
     }
   }
 

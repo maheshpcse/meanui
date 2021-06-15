@@ -69,6 +69,9 @@ input[type="button"] {
   font-weight: bold;
 }
 
+input[type="button"]:hover {
+  background-color: #f3f3f3;
+}
 
 /* Center the loader */
 #loader {

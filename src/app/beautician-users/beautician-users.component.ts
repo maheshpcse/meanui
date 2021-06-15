@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrManager } from 'ng6-toastr-notifications';
 import { AuthUserService } from '../api-services/auth-user.service';
 import { BeauticianService } from '../api-services/beautician.service';
 import * as _ from 'underscore';
 import * as moment from 'moment';
+import { NgForm } from '@angular/forms';
 declare var $: any;
 @Component({
   selector: 'app-beautician-users',
@@ -40,6 +41,8 @@ export class BeauticianUsersComponent implements OnInit {
 
   amount: any = null;
   bills: any = null;
+  description: any = null;
+  @ViewChild('reasonForm', { static: false }) reasonFormRef: NgForm;
 
   constructor(
     public router: Router,
@@ -67,10 +70,11 @@ export class BeauticianUsersComponent implements OnInit {
   }
 
   openNav(item?: any, index?: any) {
+    console.log('Selected item isss', item);
     this.viewItem = item;
     this.currentIndex = index + 1;
-    document.getElementById('mySidenav').style.width = '400px';
-    document.getElementById('main').style.marginRight = '250px';
+    // document.getElementById('mySidenav').style.width = '400px';
+    // document.getElementById('main').style.marginRight = '250px';
   }
 
   closeNav() {
@@ -155,13 +159,15 @@ export class BeauticianUsersComponent implements OnInit {
     this.selectStatus = Number(value);
   }
 
-  onUpdateStatus() {
+  addRejectUserAppointment() {
     const statusPayload = {
       booking_id: Number(this.selectUser.book_id),
       booking_status: Number(this.selectStatus),
       user_id: Number(this.selectUser.user_id),
       date: moment(this.selectUser.date).format('YYYY-MM-DD'),
-      description: this.selectUser.services,
+      description: this.description,
+      services: this.selectUser.services,
+      amounts: this.selectUser.amounts,
       issued_by: this.username
     }
     console.log('Post payload to update user status isss', statusPayload);
@@ -179,6 +185,13 @@ export class BeauticianUsersComponent implements OnInit {
     }, (error: any) => {
       this.toastr.errorToastr('Network failed, Please try again.');
     });
+  }
+
+  resetForm() {
+    if (this.reasonFormRef) {
+      this.reasonFormRef.reset();
+    }
+    this.description = null;
   }
 
 }

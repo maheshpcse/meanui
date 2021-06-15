@@ -285,13 +285,15 @@ export class BeauticiansListComponent implements OnInit {
   }
 
   addBookingData() {
-    const SUBSERVICES: any = [];
+    const SUBSERVICES = [];
+    const AMOUNTS = [];
     for (const item of this.selectedSubServices) {
       for (const data of item) {
         SUBSERVICES.push(data.sub_service_name);
+        AMOUNTS.push(data.service_amount);
       }
     }
-    console.log('selected sub services isss', SUBSERVICES);
+    console.log('selected sub services and amounts isss', SUBSERVICES, AMOUNTS);
     const bookingPayload = {
       booking_id: null,
       user_id: Number(this.userId),
@@ -299,6 +301,7 @@ export class BeauticiansListComponent implements OnInit {
       owner_id: Number(this.viewItem.owner_id),
       law_firm_name: this.viewItem.law_firm_name,
       services: SUBSERVICES.join(','),
+      amounts: AMOUNTS.join(','),
       date: moment(this.selectDate).format("YYYY-MM-DD"),
       time: moment(this.selectTime).format("HH:MM:ss"),
       booking_status: 2,

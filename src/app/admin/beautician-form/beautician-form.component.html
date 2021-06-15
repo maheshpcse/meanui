@@ -13,40 +13,109 @@
         </div>
         <div class="col-md-12">
             <form #beauticianForm="ngForm">
+                <p class="para1">Enter Personal Details :</p>
                 <div class="container">
                     <div class="row">
                         <div class="form-group col-md-4">
                             <label for="firstname">Full Name</label>
-                            <input class="form-control" type="text" name="firstname" id="firstnameId" placeholder="Enter fullname" [(ngModel)]="fullName" required>
+                            <input class="form-control" type="text" name="firstname" id="firstnameId"
+                                placeholder="Enter fullname" [(ngModel)]="fullName" required>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="username">User Name</label>
-                            <input class="form-control" type="text" name="username" id="usernameId" placeholder="Enter username" [(ngModel)]="userName" required>
+                            <input class="form-control" type="text" name="username" id="usernameId"
+                                placeholder="Enter username" [(ngModel)]="userName" required>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="email">Email Address</label>
-                            <input class="form-control" type="email" name="emailname" id="emailId" placeholder="Enter email address" [(ngModel)]="emailName" required>
+                            <input class="form-control" type="email" name="emailname" id="emailId"
+                                placeholder="Enter email address" [(ngModel)]="emailName" required>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="password">Password</label>
                             <div class="input-group">
-                                <button class="btn btn-action-generate" type="submit" (click)="generatePassword()">Generate Password</button>
-                                <input class="form-control" type="password" name="pwdName" id="pwdId" placeholder="i.e. abcxyz" [(ngModel)]="passWord" disabled required>
+                                <button class="btn btn-action-generate" type="submit"
+                                    (click)="generatePassword()">Generate Password</button>
+                                <input class="form-control" type="password" name="pwdName" id="pwdId"
+                                    placeholder="i.e. abcxyz" [(ngModel)]="passWord" disabled required>
                             </div>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="mobilenumber">Phone Number</label>
-                            <input class="form-control" type="number" name="phoneNum" id="phoneNumId" placeholder="Enter mobile number" [(ngModel)]="mobileNumber" required>
+                            <input class="form-control" type="number" name="phoneNum" id="phoneNumId"
+                                placeholder="Enter mobile number" [(ngModel)]="mobileNumber" required>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="profile">Profile</label>
-                            <input class="form-control" type="file" name="profileName" id="profileId" [(ngModel)]="profileImage" required>
+                            <input class="form-control" type="file" name="profileName" id="profileId" accept="*"
+                                #fileInput (change)="selectedFile($event)" required>
                         </div>
                     </div>
+                </div>
+                <p class="para1 mt-3">Enter Service Details :</p>
+                <div class="container">
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label for="age">Age</label>
+                            <input type="number" class="form-control" name="ageName" id="ageId" [(ngModel)]="age"
+                                placeholder="Enter age" required>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="experience">Experience</label>
+                            <input type="number" class="form-control" name="expName" id="expId" [(ngModel)]="experience"
+                                placeholder="Enter experience" required>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="rating">Rating</label>
+                            <select class="form-control select" name="ratingName" id="ratingId" [(ngModel)]="rating"
+                                required>
+                                <option value="null" disabled>Select Rating :</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="service">Service Name</label>
+                            <div id="accordion">
+                                <div class="card" *ngFor="let item of servicesList; let j=index;">
+                                    <div class="card-header label-title"
+                                        [ngClass]="{'isActive': selectAll[j] === true}">
+                                        <input class="form-control col-md-1" type="checkbox" name="serviceName-{{j}}"
+                                            id="serviceId-{{j}}" (input)="onInputAction(item, j, $event.target.checked)"
+                                            [checked]="selectAll[j]">
+                                        <a class="card-link" data-toggle="collapse" href="#collapseOne"
+                                            (click)="onCollapseBody(item, j)">
+                                            {{ item.service_name | titlecase }}
+                                        </a>
+                                    </div>
+                                    <div id="collapseOne-{{j}}" class="collapse-{{j}}" data-parent="#accordion"
+                                        [ngClass]="{'show': j===currentIndex}">
+                                        <div class="card-body">
+                                            <angular2-multiselect class="form-control col-md-4"
+                                                [data]="allSubServices[j]" [(ngModel)]="selectedSubServices[j]"
+                                                [ngModelOptions]="{standalone: true}" [settings]="subSettings[j]"
+                                                (onSelect)="onSubServiceSelect($event)"
+                                                (onDeSelect)="OnSubServiceDeSelect($event)"
+                                                (onSelectAll)="onSelectAllSubService($event)"
+                                                (onDeSelectAll)="onDeSelectAllSubService($event)">
+                                            </angular2-multiselect>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
                     <div class="row mt-5">
                         <div class="form-group col-md-4">
                             <button class="btn btn-action-cancel" type="submit" (click)="onActionBack()">Cancel</button>
-                            <button class="btn btn-action-add ml-2" type="submit" (click)="saveBeauticianData()" [disabled]="beauticianForm.invalid">{{btnType | titlecase}}</button>
+                            <button class="btn btn-action-add ml-2" type="submit" (click)="saveBeauticianData()"
+                                [disabled]="beauticianForm.invalid || setDisableModal()">{{btnType |
+                                titlecase}}</button>
                         </div>
                     </div>
                 </div>
@@ -62,7 +131,7 @@
                     <p>Beauticians List</p>
                     <span class="ml-3"><i class="fa fa-angle-right" aria-hidden="false"></i></span>
                     <button class="btn btn-action-addnew ml-3" (click)="onClickView('form')">
-                        <i class="fa fa-plus" aria-hidden="false"></i> 
+                        <i class="fa fa-plus" aria-hidden="false"></i>
                         <span class="ml-2">Add New</span>
                     </button>
                 </div>
@@ -70,13 +139,15 @@
                     <button class="btn btn-action-back mr-2" (click)="onActionBack()">
                         <span><i class="fa fa-angle-left" aria-hidden="false"></i> Back</span>
                     </button>
-                    <select class="form-control width-50" name="statusName" id="statusId" [(ngModel)]="statusQuery" (change)="onSelectStatus()">
+                    <select class="form-control width-50" name="statusName" id="statusId" [(ngModel)]="statusQuery"
+                        (change)="onSelectStatus()">
                         <option value="null">All Status</option>
                         <option value="1">Active</option>
                         <option value="0">In Active</option>
                     </select>
                     <div class="form-group input-group ml-2">
-                        <input class="form-control width-100" type="text" name="searchName" id="searchId" placeholder="Quick search..." [(ngModel)]="searchQuery" (input)="onInputSearch()">
+                        <input class="form-control width-100" type="text" name="searchName" id="searchId"
+                            placeholder="Quick search..." [(ngModel)]="searchQuery" (input)="onInputSearch()">
                         <button class="btn btn-action-search" type="submit" (click)="onSearchData()">
                             <i class="fa fa-search" aria-hidden="false" *ngIf="!searchQuery || searchQuery === ''"></i>
                             <i class="fa fa-check" aria-hidden="false" *ngIf="searchQuery || searchQuery !== ''"></i>
@@ -99,27 +170,36 @@
                 <tbody class="table-body">
                     <tr *ngFor="let item of beauticians; let i=index;">
                         <td class="table-profile">
-                            <img src="../../../assets/images/admin-avatar.png" alt="_profilepic" class="img-responsive rounded-image" width="50" height="50">
+                            <img src="../../../assets/images/admin-avatar.png" alt="_profilepic"
+                                class="img-responsive rounded-image" width="50" height="50">
                             <span class="ml-2">{{ item.fullname |titlecase }}</span>
                         </td>
                         <td>{{ item.username | titlecase }}</td>
                         <td>{{ item.email }}</td>
                         <td>{{ item.mobile }}</td>
                         <td class="bg-status">
-                            <span *ngIf="item.status === 1" class="is-active"><i class="fa fa-check-circle-o" aria-hidden="false"></i> Active</span>
-                            <span *ngIf="item.status === 0" class="is-inactive"><i class="fa fa-circle" aria-hidden="false"></i> Inactive</span>
+                            <span *ngIf="item.status === 1" class="is-active"><i class="fa fa-check-circle-o"
+                                    aria-hidden="false"></i> Active</span>
+                            <span *ngIf="item.status === 0" class="is-inactive"><i class="fa fa-circle"
+                                    aria-hidden="false"></i> Inactive</span>
                         </td>
                         <td class="text-center">
-                            <button class="btn btn-action-view" type="submit" *ngIf="item.status === 1" (click)="onClickAction(item, i, 'view')">
+                            <button class="btn btn-action-view" type="submit" *ngIf="item.status === 1"
+                                (click)="onClickAction(item, i, 'view')">
                                 <i class="fa fa-eye" aria-hidden="false"></i>
                             </button>
-                            <button class="btn btn-action-update ml-2" type="submit" *ngIf="item.status === 1" (click)="onClickAction(item, i, 'update')">
+                            <button class="btn btn-action-update ml-2" type="submit" *ngIf="item.status === 1"
+                                (click)="onClickAction(item, i, 'update')">
                                 <i class="fa fa-pencil-square-o" aria-hidden="false"></i>
                             </button>
-                            <button class="btn btn-action-delete ml-2" type="submit" *ngIf="item.status === 1" data-toggle="modal" data-target="#deleteRestore" (click)="onClickAction(item, i, 'delete')">
+                            <button class="btn btn-action-delete ml-2" type="submit" *ngIf="item.status === 1"
+                                data-toggle="modal" data-target="#deleteRestore"
+                                (click)="onClickAction(item, i, 'delete')">
                                 <i class="fa fa-trash" aria-hidden="false"></i>
                             </button>
-                            <button class="btn btn-action-restore" type="submit" *ngIf="item.status === 0" data-toggle="modal" data-target="#deleteRestore" (click)="onClickAction(item, i, 'restore')">
+                            <button class="btn btn-action-restore" type="submit" *ngIf="item.status === 0"
+                                data-toggle="modal" data-target="#deleteRestore"
+                                (click)="onClickAction(item, i, 'restore')">
                                 <i class="fa fa-undo" aria-hidden="false"></i>
                             </button>
                         </td>
@@ -130,10 +210,14 @@
                         <td colspan="6">
                             <div class="pagination_rounded mt-5" *ngIf="beauticians.length !== 0">
                                 <ul *ngFor="let item of totalPages; let i=index">
-                                    <li [ngClass]="{'isDisable': page === 1}" (click)="getPage(page - 1)" *ngIf="item === 'Prev'"> <a class="prev"> <i class="fa fa-angle-left" aria-hidden="true"></i> Prev </a> </li>
-                                    <li class="hidden-xs" [ngClass]="{'active': page === item}"
-                                        (click)="getPage(item)" *ngIf="item !== 'Prev' && item !== 'Next'"><a>{{item}}</a> </li>
-                                    <li [ngClass]="{'isDisable': page === temptotalPages.length}" (click)="getPage(page + 1)" *ngIf="item === 'Next'"><a class="next"> Next <i class="fa fa-angle-right" aria-hidden="true"></i></a> </li>
+                                    <li [ngClass]="{'isDisable': page === 1}" (click)="getPage(page - 1)"
+                                        *ngIf="item === 'Prev'"> <a class="prev"> <i class="fa fa-angle-left"
+                                                aria-hidden="true"></i> Prev </a> </li>
+                                    <li class="hidden-xs" [ngClass]="{'active': page === item}" (click)="getPage(item)"
+                                        *ngIf="item !== 'Prev' && item !== 'Next'"><a>{{item}}</a> </li>
+                                    <li [ngClass]="{'isDisable': page === temptotalPages.length}"
+                                        (click)="getPage(page + 1)" *ngIf="item === 'Next'"><a class="next"> Next <i
+                                                class="fa fa-angle-right" aria-hidden="true"></i></a> </li>
                                 </ul>
                             </div>
                         </td>
@@ -147,37 +231,66 @@
                 <p class="text-center add-user-title">View Beautician Details</p>
                 <hr>
                 <div class="profile-details">
-                    <img src="../../../assets/images/admin-avatar.png" alt="_profile" class="img-responsive rounded-image text-center" width="100" height="100">
+                    <img src="../../../assets/images/admin-avatar.png" alt="_profile"
+                        class="img-responsive rounded-image text-center" width="100" height="100">
                     <p class="p1 text-center mt-3">{{ viewItem?.fullname | titlecase }}</p>
                     <p class="p2 text-center">{{ viewItem?.username }}</p>
                 </div>
                 <hr>
+                <p class="para2">Personal Details :</p>
                 <div>
-                    <table class="table table-borderless personal-details">
-                        <thead>
+                    <table class="table table-borderless table-data">
+                        <tbody>
                             <tr class="tr1">
+                                <th><i class="fa fa-user-secret" aria-hidden="false"></i></th>
+                                <th class="th1">Age</th>
+                                <td>{{ viewItem?.age }}</td>
+                            </tr>
+                            <tr class="tr2">
                                 <th><i class="fa fa-envelope" aria-hidden="false"></i></th>
                                 <th class="th1">Email</th>
                                 <td>{{ viewItem?.email }}</td>
                             </tr>
-                            <tr class="tr2">
-                                <th><i class="fa fa-mobile" aria-hidden="false"></i></th>
+                            <tr class="tr3">
+                                <th><i class="fa fa-phone" aria-hidden="false"></i></th>
                                 <th class="th1">Mobile</th>
                                 <td>{{ viewItem?.mobile }}</td>
                             </tr>
-                            <tr class="tr3">
+                            <tr class="tr4">
                                 <th><i class="fa fa-user-secret" aria-hidden="false"></i></th>
                                 <th class="th1">Role</th>
                                 <td>{{ viewItem?.role | uppercase }}</td>
                             </tr>
-                            <tr class="tr4">
+                            <tr class="tr5">
                                 <th><i class="fa fa-exclamation-circle" aria-hidden="false"></i></th>
                                 <th class="th1">Status</th>
                                 <td>{{ viewItem?.status === 0 ? 'Active' : 'Inactive' }}</td>
                             </tr>
-                        </thead>
+                            <tr class="tr6">
+                                <th><i class="fa fa-briefcase" aria-hidden="false"></i></th>
+                                <th class="th1">Experience</th>
+                                <td>{{ viewItem?.experience}}</td>
+                            </tr>
+                            <tr class="tr7">
+                                <th><i class="fa fa-star-half-o" aria-hidden="false"></i></th>
+                                <th class="th1">Rating</th>
+                                <td>
+                                    <span class="fa fa-star" [ngClass]="{'checked': item <= viewItem?.rating}" *ngFor="let item of [1,2,3,4,5]; let i=index"></span>
+                                </td>
+                            </tr>
+                        </tbody>
                     </table>
                 </div>
+                <p class="para3">Service Details :</p>
+                <div class="div2 p-2" *ngFor="let item of SUBSERVICES; let i=index;">
+                    <span class="ml-2">{{ item }}</span>
+                </div>
+                <!-- <div class="div2 p-2">
+                    <ul class="list-group list-group-flush" *ngFor="let item of SUBSERVICES; let i=index;">
+                        <li class="list-group-item">{{ item }}</li>
+                        <br>
+                    </ul>
+                </div> -->
             </div>
         </div>
     </div>
@@ -189,7 +302,8 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h6 class="modal-title" id="deleteRestoreModalLabel">{{ viewItem.status === 1 ? 'Delete' : 'Restore' }} beautician confirmation ?</h6>
+                <h6 class="modal-title" id="deleteRestoreModalLabel">{{ viewItem.status === 1 ? 'Delete' : 'Restore' }}
+                    beautician confirmation ?</h6>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

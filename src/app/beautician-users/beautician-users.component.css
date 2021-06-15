@@ -96,10 +96,16 @@
   align-items: baseline;
 }
 
-.amount-input,
+label {
+  color: gray;
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+/* .amount-input,
 textarea {
   background-color: lightblue;
-}
+} */
 
 .btn-action {
   color: white;

@@ -3,6 +3,26 @@ html, body {
     background-color: #dee2ec;
 }
 
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #dee2e6;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: lightslategray;
+  }
+
 /* angular2-multiselect {
     height: 50px;
     padding: 10px;
