@@ -1,6 +1,111 @@
 <app-header></app-header>
-<div class="container">
+<div class="container-fluid">
     <div class="row mt-3">
-        
+        <div class="col-md-4 img-col">
+            <div class="img-view">
+                <img src="../../../assets/images/admin-avatar.png" alt="_profile"
+                    class="img-responsive rounded-image text-center" width="250" height="250">
+                <p class="p1 mt-5 text-center">Pachapalam Mahesh</p>
+                <p class="p2 mt-2 text-center">master</p>
+            </div>
+        </div>
+        <div class="col-md-4 profile-col">
+            <p class="p3">Personal Details :</p>
+            <div class="profile-view">
+                <div class="card-one">
+                    <span>maheshpm1599@gmail.com</span>
+                    <span><i class="fa fa-envelope" aria-hidden="false"></i></span>
+                </div>
+                <div class="card-two mt-3">
+                    <span>+91 8886197968</span>
+                    <span><i class="fa fa-phone" aria-hidden="false"></i></span>
+                </div>
+                <div class="card-three mt-3">
+                    <span>BEAUTICIAN</span>
+                    <span><i class="fa fa-user-secret" aria-hidden="false"></i></span>
+                </div>
+                <div class="card-three mt-3">
+                    <span>Active</span>
+                    <span><i class="fa fa-exclamation-circle" aria-hidden="false"></i></span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 service-col">
+            <p class="p4">Service Details :</p>
+            <div id="accordion" class="myaccordion">
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h2 class="mb-0">
+                            <button class="d-flex align-items-center justify-content-between btn btn-link collapsed"
+                                data-toggle="collapse" data-target="#collapseOne" aria-expanded="false"
+                                aria-controls="collapseOne">
+                                Beautician Form
+                                <span>
+                                    <i class="fa fa-angle-down"></i>
+                                </span>
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">Add Beautician</li>
+                                <li class="list-group-item">View Beautician</li>
+                                <li class="list-group-item">Update Beautician</li>
+                                <li class="list-group-item">Delete Beautician</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mt-3">
+                    <div class="card-header" id="headingTwo">
+                        <h2 class="mb-0">
+                            <button class="d-flex align-items-center justify-content-between btn btn-link collapsed"
+                                data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
+                                aria-controls="collapseTwo">
+                                Beauty Parlour Form
+                                <span>
+                                    <i class="fa fa-angle-down"></i>
+                                </span>
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                        <div class="card-body">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">Add Beauty Parlour</li>
+                                <li class="list-group-item">View Beauty Parlour</li>
+                                <li class="list-group-item">Update Beauty Parlour</li>
+                                <li class="list-group-item">Delete Beauty Parlour</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mt-3">
+                    <div class="card-header" id="headingThree">
+                        <h2 class="mb-0">
+                            <button class="d-flex align-items-center justify-content-between btn btn-link collapsed"
+                                data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
+                                aria-controls="collapseThree">
+                                Beauty Parlour Services & Sub Services
+                                <span>
+                                    <i class="fa fa-angle-down"></i>
+                                </span>
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                        <div class="card-body">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">Add Beauty Parlour Services</li>
+                                <li class="list-group-item">View Beauty Parlour Services</li>
+                                <li class="list-group-item">Update Beauty Parlour Services</li>
+                                <li class="list-group-item">Delete Beauty Parlour Services</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

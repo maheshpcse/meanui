@@ -112,7 +112,7 @@
                 <div class="container">
                     <div class="row mt-5">
                         <div class="form-group col-md-4">
-                            <button class="btn btn-action-cancel" type="submit" (click)="onActionBack()">Cancel</button>
+                            <button class="btn btn-action-cancel" type="submit" (click)="onClickView('table')">Cancel</button>
                             <button class="btn btn-action-add ml-2" type="submit" (click)="saveBeauticianData()"
                                 [disabled]="beauticianForm.invalid || setDisableModal()">{{btnType |
                                 titlecase}}</button>
@@ -167,7 +167,7 @@
                         <th class="text-center">Action</th>
                     </tr>
                 </thead>
-                <tbody class="table-body">
+                <tbody class="table-body" *ngIf="!spinner">
                     <tr *ngFor="let item of beauticians; let i=index;">
                         <td class="table-profile">
                             <img src="../../../assets/images/admin-avatar.png" alt="_profilepic"
@@ -203,6 +203,16 @@
                                 <i class="fa fa-undo" aria-hidden="false"></i>
                             </button>
                         </td>
+                    </tr>
+                </tbody>
+                <tbody class="table-body" *ngIf="spinner">
+                    <tr *ngFor="let item of [1,2,3,4,5,6]; let i=index;">
+                        <td><span class="box shine"></span></td>
+                        <td><span class="box shine"></span></td>
+                        <td><span class="box shine"></span></td>
+                        <td><span class="box shine"></span></td>
+                        <td><span class="box shine"></span></td>
+                        <td class="text-center"><span class="box shine"></span></td>
                     </tr>
                 </tbody>
                 <tfoot>

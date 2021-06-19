@@ -1,6 +1,112 @@
 <app-header></app-header>
-<div class="container">
-    <div class="row mt-3">
-        
-    </div>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-6">
+			<p class="page-title">Update Admin Profile && Information settings :</p>
+			<div class="accordion" id="accordionExample">
+				<div class="card">
+					<div class="card-header" id="headingOne">
+						<h2 class="clearfix mb-0">
+							<a class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><i class="fa fa-chevron-circle-down"></i> CHANGE USER PROFILE</a>			
+						</h2>
+					</div>
+					<div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+						<div class="card-body">
+							<div class="container">
+								<div class="row">
+									<div class="form-group input-group col-md-9">
+										<input type="file" class="form-control" name="fileName" id="fileId" required>
+										<button class="btn btn-action-upload ml-2" type="submit">Upload</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="card">
+					<div class="card-header" id="headingTwo">
+						<h2 class="mb-0">
+							<a class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"><i class="fa fa-chevron-circle-down"></i> CHANGE USER DETAILS</a>
+						</h2>
+					</div>
+					<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+						<div class="card-body">
+							<div class="container">
+								<div class="row">
+									<div class="form-group col-md-6">
+										<input type="text" class="form-control" name="firstname" id="firstnameId" placeholder="Enter fullname" required>
+									</div>
+									<div class="form-group col-md-6">
+										<input type="text" class="form-control" name="username" id="usernameId" placeholder="Enter username" required>
+									</div>
+									<div class="form-group col-md-6">
+										<input type="email" class="form-control" name="emailname" id="emailId" placeholder="Enter email address" required>
+									</div>
+									<div class="form-group col-md-6">
+										<input type="number" class="form-control" name="phonenumber" id="phonenumberId" placeholder="Enter phone number" required>
+									</div>
+									<div class="form-group input-group col-md-6 mt-3">
+										<button class="btn btn-action-cancel" type="submit">Cancel</button>
+										<button class="btn btn-action-update ml-2" type="submit">Update</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="card">
+					<div class="card-header" id="headingThree">
+						<h2 class="mb-0">
+							<a class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree"><i class="fa fa-chevron-circle-down"></i> CHANGE USER PASSWORD</a>                     
+						</h2>
+					</div>
+					<div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+						<div class="card-body">
+							<div class="container">
+								<div class="row">
+									<div class="form-group col-md-6">
+										<input type="password" class="form-control" name="pwdName" id="pwdNameId" placeholder="Enter new password" required>
+									</div>
+									<div class="form-group col-md-6">
+										<input type="password" class="form-control" name="phonenumber" id="phonenumberId" placeholder="Enter confirm password" required>
+									</div>
+									<div class="form-group input-group col-md-6 mt-3">
+										<button class="btn btn-action-cancel" type="submit">Cancel</button>
+										<button class="btn btn-action-update ml-2" type="submit">Update</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<p class="page-title">Alerts && Notifications :</p>
+			<div class="div1">
+				<p>Latest Notifications :</p>
+				<button class="btn btn-action-view">View All Notifications</button>
+			</div>
+			<ul class="timeline">
+				<li>
+					<a target="_blank">New Web Design</a>
+					<a class="float-right">21 March, 2014</a>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque diam non nisi semper, et elementum lorem ornare. Maecenas placerat facilisis mollis. Duis sagittis ligula in sodales vehicula....</p>
+					<button class="btn btn-action-read">Read More</button>
+				</li>
+				<li>
+					<a href="#">21 000 Job Seekers</a>
+					<a class="float-right">4 March, 2014</a>
+					<p>Curabitur purus sem, malesuada eu luctus eget, suscipit sed turpis. Nam pellentesque felis vitae justo accumsan, sed semper nisi sollicitudin...</p>
+					<button class="btn btn-action-read">Read More</button>
+				</li>
+				<li>
+					<a href="#">Awesome Employers</a>
+					<a class="float-right">1 April, 2014</a>
+					<p>Fusce ullamcorper ligula sit amet quam accumsan aliquet. Sed nulla odio, tincidunt vitae nunc vitae, mollis pharetra velit. Sed nec tempor nibh...</p>
+					<button class="btn btn-action-read">Read More</button>
+				</li>
+			</ul>
+		</div>
+	</div>
 </div>

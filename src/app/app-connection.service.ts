@@ -30,6 +30,7 @@ export const APIURL = {
   GET_ALL_USERS: environment.apiUrl + '/get_all_users',
 
   // admin services API URL's
+  GET_ALL_DASHBOARD_COUNTS: environment.apiUrl + '/get_all_dashboard_counts',
   GET_ALL_BEAUTICIANS: environment.apiUrl + '/get_all_beauticians',
   GET_ALL_BEAUTY_SERVICES: environment.apiUrl + '/get_all_beauty_services',
   ADD_BEAUTICIAN: environment.apiUrl + '/add_beautician',

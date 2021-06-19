@@ -35,6 +35,7 @@ export class BeauticianFormComponent implements OnInit {
   public viewPage: any = 'table';
   public btnType: any = 'submit';
   currentIndex: any = null;
+  spinner: any = false;
 
   rowsOnPage: any = 10;
   limit: any = 10;
@@ -68,6 +69,7 @@ export class BeauticianFormComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.spinner = true;
     this.getAllBeauticiansList();
     this.getAllBeautyServicesList();
     this.servicesSettings = {
@@ -164,6 +166,7 @@ export class BeauticianFormComponent implements OnInit {
   }
 
   getAllBeauticiansList() {
+    this.spinner = true;
     const beauticiansPayload = {
       limit: Number(this.limit),
       page: Number(this.page),
@@ -182,15 +185,20 @@ export class BeauticianFormComponent implements OnInit {
       (response: any) => {
         console.log("Get all beauticians response isss", response);
         if (response.success) {
-          this.beauticians = response.data;
-          this.count = response.count;
-          this.createPager();
+          setTimeout(() => {
+            this.beauticians = response.data;
+            this.count = response.count;
+            this.createPager();
+            this.spinner = false;
+          }, 5000);
         } else {
           this.toastr.errorToastr(response.message);
         }
+        // this.spinner = false;
       },
       (error: any) => {
         this.toastr.errorToastr("Network failed, Please try again.");
+        this.spinner = false;
       }
     );
   }
@@ -438,6 +446,7 @@ export class BeauticianFormComponent implements OnInit {
   deleteRestoreBeautician() {
     const beauticianPayload = {
       user_id: Number(this.viewItem.user_id),
+      worker_id: Number(this.viewItem.worker_id),
       status: Number(this.viewItem.status) === 1 ? 0 : 1
     }
     console.log('Post payload to delete/restore beautician data isss', beauticianPayload);

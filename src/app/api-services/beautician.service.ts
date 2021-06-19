@@ -23,6 +23,10 @@ export class BeauticianService {
   }
 
   // admin API services
+  getAllDashboardCounts() {
+    return this.http.get<any>(APIURL.GET_ALL_DASHBOARD_COUNTS);
+  }
+
   getAllUsers() {
     return this.http.get<any>(APIURL.GET_ALL_USERS);
   }

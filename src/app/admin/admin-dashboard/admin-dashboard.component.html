@@ -1,9 +1,82 @@
 <app-header></app-header>
-<div class="container">
+<div class="container-fluid">
     <div class="row mt-3">
-        <div class="col-md-12">
-            <p class="titles">Hi <b>{{fullName}}</b>, Welcome To <span class="sub-titles">Online Beautician Booking System</span></p>
-            <hr>
+        <div class="col-md-9">
+            <p class="titles">
+                Hi <b>{{ fullName }}</b>, Welcome To
+                <span class="sub-titles">Online Beautician Booking System</span>
+            </p>
+            <hr />
+        </div>
+        <div class="col-md-3">
+            <div class="alerts-data">
+                <span class="alerts-info">
+                    <i class="fa fa-bell-o notify" aria-hidden="false"></i>
+                </span>
+                <span class="alerts-info">
+                    <i class="fa fa-commenting-o" aria-hidden="false"></i>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row" *ngIf="!spinner">
+        <div class="col-md-3">
+            <div class="card card-one">
+                <div class="div1">
+                    <p>USERS</p>
+                    <span><i class="fa fa-user-o" aria-hidden="false"></i></span>
+                </div>
+                <hr>
+                <p class="p1 text-center">{{allData.length ? allData[0] : 0}}</p>
+            </div>
+        </div>
+        <div class="col-md-3 left-card">
+            <div class="card card-one">
+                <div class="div1">
+                    <p>BEAUTICIANS</p>
+                    <span><i class="fa fa-users" aria-hidden="false"></i></span>
+                </div>
+                <hr>
+                <p class="p1 text-center">{{allData.length ? allData[1] : 0}}</p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card card-two">
+                <div class="div2">
+                    <p>BEAUTY PARLOURS</p>
+                    <span><i class="fa fa-building-o" aria-hidden="false"></i></span>
+                </div>
+                <hr>
+                <p class="p2 text-center">{{allData.length ? allData[2] : 0}}</p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card card-two">
+                <div class="div2">
+                    <p>BEAUTY SERVICES</p>
+                    <span><i class="fa fa-server" aria-hidden="false"></i></span>
+                </div>
+                <hr>
+                <p class="p2 text-center">{{allData.length ? allData[3] : 0}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="row" *ngIf="spinner">
+        <div class="col-md-3" [ngClass]="{'left-card' : item === 2}" *ngFor="let item of [1,2,3,4]; let i=index;">
+            <div class="card" [ngClass]="item <= 2 ? 'card-one' : 'card-two'">
+                <div [ngClass]="item <= 2 ? 'div1' : 'div2'">
+                    <p *ngIf="!spinner">USERS</p>
+                    <span *ngIf="!spinner"><i class="fa fa-user-o" aria-hidden="false"></i></span>
+                    <p class="box1 shine" *ngIf="spinner"></p>
+                    <span class="box2 shine mt-" *ngIf="spinner"></span>
+                </div>
+                <hr>
+                <div class="text-center" *ngIf="spinner">
+                    <p class="box shine" [ngClass]="item <= 2 ? 'p1' : 'p2'"></p>
+                </div>
+            </div>
         </div>
     </div>
 </div>

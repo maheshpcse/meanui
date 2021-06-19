@@ -1,0 +1,178 @@
+/* main accrodian css styles */
+.accordion {
+	border-right: 3px solid #aab5c0;
+}
+.accordion .card {
+  background: none;
+  border: none;
+}
+.accordion .card .card-header {
+  background: none;
+  border: none;
+  padding: 0.4rem 1rem;
+  font-family: "Roboto", sans-serif;
+}
+.accordion .card-header h2 span {
+  float: left;
+  margin-top: 10px;
+}
+.accordion .card-header .btn {
+  color: #aab5c0;
+  font-size: 1.04rem;
+  text-align: left;
+  position: relative;
+  font-weight: 500;
+  padding-left: 2rem;
+}
+.accordion .card-header i {
+  font-size: 1.2rem;
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+  top: 9px;
+}
+.accordion .card-header .btn:hover {
+  color: #ff8300;
+}
+.accordion .card-body {
+  color: #324353;
+  padding: 0.5rem 3rem;
+}
+.page-title {
+  color: #324353;
+  font-size: 1.2em;
+  margin: 3rem 0 3rem 1rem;
+  font-family: "Roboto", sans-serif;
+  position: relative;
+}
+.page-title::after {
+  content: "";
+  width: 80px;
+  position: absolute;
+  height: 3px;
+  border-radius: 1px;
+  background: #73bb2b;
+  left: 0;
+  bottom: -15px;
+}
+.accordion .highlight .btn {
+  color: #74bd30;
+}
+.accordion .highlight i {
+  transform: rotate(180deg);
+}
+/* end main accrodian css styles */
+
+/* form css styles */
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="file"],
+input[type="password"] {
+  height: 50px;
+  padding: 10px;
+  font-size: 1em;
+  color: gray;
+}
+
+.btn-action-upload {
+  color: white;
+  background-color: #6495ed;
+}
+
+.btn-action-upload:hover {
+  color: white;
+  background-color: #1667af;
+}
+
+.btn-action-update {
+  color: white;
+  background-color: #1667af;
+}
+
+.btn-action-update:hover {
+  color: white;
+  background-color: #1668af;
+}
+
+.btn-action-cancel {
+  background-color: #bfcbd6;
+}
+
+.btn-action-cancel:hover {
+  background-color: #aab5c0;
+}
+/* end form css styles */
+
+
+/* alerts && notifications css styles */
+ul.timeline {
+  list-style-type: none;
+  position: relative;
+}
+ul.timeline:before {
+  content: ' ';
+  background: #d4d9df;
+  display: inline-block;
+  position: absolute;
+  left: 29px;
+  width: 2px;
+  height: 100%;
+  z-index: 400;
+}
+ul.timeline > li {
+  margin: 20px 0;
+  padding-left: 20px;
+}
+ul.timeline > li:before {
+  content: ' ';
+  background: white;
+  display: inline-block;
+  position: absolute;
+  border-radius: 50%;
+  border: 3px solid #6495ed;
+  left: 20px;
+  width: 20px;
+  height: 20px;
+  z-index: 400;
+}
+
+.timeline li a {
+  cursor: pointer;
+  text-decoration: none;
+  color: #6495ed !important;
+}
+
+.timeline .btn-action-read {
+  color: white;
+  background-color: #aab5c0;
+}
+
+.timeline .btn-action-read:hover {
+  color: white;
+  background-color: #6495ed;
+}
+
+.btn-action-view {
+  color: white;
+  background-color: #aab5c0;
+}
+
+.btn-action-view:hover {
+  color: white;
+  background-color: #6495ed;
+}
+
+.div1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 3rem 0 0 1rem;
+}
+
+.div1 p {
+  color: lightslategray;
+  font-size: 1em;
+  text-decoration: underline;
+}
+/* end alerts && notifications css styles */

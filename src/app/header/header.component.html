@@ -45,9 +45,9 @@
         <li class="nav-item" [ngClass]="{'is-active': href === 'signup'}" *ngIf="!authUserService.isLoggedIn()">
             <a class="nav-link" [routerLink]="['/signup']">Signup</a>
         </li>
-        <li class="nav-item logout-link" *ngIf="authUserService.isLoggedIn()">
+        <!-- <li class="nav-item logout-link" *ngIf="authUserService.isLoggedIn()">
             <a class="nav-link" (click)="userLogout()">Logout</a>
-        </li>
+        </li> -->
         <li class="nav-item" *ngIf="authUserService.isLoggedIn()">
             <a class="nav-link">
                 <div class="dropdown">

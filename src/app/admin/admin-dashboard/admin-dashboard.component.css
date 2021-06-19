@@ -2,12 +2,158 @@
   color: gray;
   font-size: 1em;
   background-color: lightgray;
-  border-left: 5px solid #6495ED;
+  border-left: 5px solid #6495ed;
   padding: 2%;
 }
 
 .sub-titles {
-  color: #6495ED;
+  color: #6495ed;
   font-size: 1.2em;
   text-transform: uppercase;
 }
+
+.alerts-data {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.alerts-info {
+  color: gray;
+  background-color: lightgray;
+  border-left: 5px solid #6495ed;
+  padding: 3%;
+  width: 150px;
+  text-align: center;
+}
+
+.alerts-info .fa {
+  font-size: 3em;
+}
+
+.left-card {
+  border-right: 5px solid #bfcbd6;
+}
+
+.card-one .div1 {
+  display: flex;
+  justify-content: space-around;
+  align-items: baseline;
+}
+
+.card-one .div1 p {
+  color: #bfcbd6;
+  font-size: 1.5em;
+  /* margin: 2em 0 2em 0;  */
+}
+
+.card-one .div1 span {
+  color: #bfcbd6;
+  font-size: 2.5em;
+  /* margin: 2em 0 2em 0;  */
+}
+
+.card-one .p1 {
+  color: #6495ed;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.card-two .div2 {
+  display: flex;
+  justify-content: space-around;
+  align-items: baseline;
+}
+
+.card-two .div2 p {
+  color: crimson;
+  font-size: 1.5em;
+  /* margin: 2em 0 2em 0;  */
+}
+
+.card-two .div2 span {
+  color: crimson;
+  font-size: 2.5em;
+  /* margin: 2em 0 2em 0;  */
+}
+
+.card-two .p2 {
+  color: #bfcbd6;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+/* calendar css styles */
+
+/* end calendar css styles */
+
+
+/* css shimmers styles */
+.shine {
+  background: #f6f7f8;
+  background-image: linear-gradient(
+    to right,
+    #f6f7f8 0%,
+    #edeef1 20%,
+    #f6f7f8 40%,
+    #f6f7f8 100%
+  );
+  background-repeat: no-repeat;
+  background-size: 800px 104px;
+  display: inline-block;
+  position: relative;
+
+  -webkit-animation-duration: 1s;
+  -webkit-animation-fill-mode: forwards;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-name: placeholderShimmer;
+  -webkit-animation-timing-function: linear;
+}
+
+.box {
+  height: 30px;
+  width: 30px;
+}
+
+.box1 {
+  height: 30px;
+  width: 100px;
+}
+
+.box2 {
+  height: 50px;
+  width: 50px;
+  border-radius: 25px;
+}
+
+/* div {
+  display: inline-flex;
+  flex-direction: column;
+  margin-left: 25px;
+  margin-top: 15px;
+  vertical-align: top;
+}
+
+lines {
+  height: 10px;
+  margin-top: 10px;
+  width: 200px;
+}
+
+photo {
+  display: block !important;
+  width: 325px;
+  height: 100px;
+  margin-top: 15px;
+} */
+
+@-webkit-keyframes placeholderShimmer {
+  0% {
+    background-position: -468px 0;
+  }
+
+  100% {
+    background-position: 468px 0;
+  }
+}
+/* end css shimmers styles */
