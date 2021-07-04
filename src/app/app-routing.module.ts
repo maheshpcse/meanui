@@ -19,6 +19,7 @@ import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ReportsComponent } from './reports/reports.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
+import { UserFormComponent } from './user-form/user-form.component';
 import { UserProfileComponent } from './user/user-profile/user-profile.component';
 
 
@@ -113,6 +114,10 @@ const routes: Routes = [
     path: 'beautician-reports',
     canActivate: [AuthGuardService],
     component: BeauticianReportsComponent
+  },
+  {
+    path: 'user-form',
+    component: UserFormComponent
   },
   {
     path: '**',

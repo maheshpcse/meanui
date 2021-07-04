@@ -1,0 +1,138 @@
+input[type="number"] {
+  height: 50px;
+  padding: 1em;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid lightslategray;
+}
+
+input:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.btn-action-search {
+  cursor: pointer;
+  color: white;
+  background-color: #6495ed;
+}
+
+.btn-action-search:hover {
+  background-color: #1667af;
+}
+
+.title {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-top: 2px solid lightgray;
+  border-bottom: 2px solid lightgray;
+}
+
+.title .fa {
+  cursor: pointer;
+  font-size: 2em;
+}
+
+.title .span1 {
+  cursor: pointer;
+  color: white;
+  background-color: #aab5c0;
+  padding: 20px;
+}
+
+.title .span1:hover {
+  background-color: lightslategray;
+}
+
+.title .span3 {
+  cursor: pointer;
+  color: white;
+  background-color: #aab5c0;
+  padding: 20px;
+}
+
+.title .span3:hover {
+  background-color: lightslategray;
+}
+
+.title .span2 {
+  font-size: 2em;
+  display: flex;
+  justify-content: space-around;
+  align-items: baseline;
+}
+
+.title .span2 .p1 {
+  color: #6495ed;
+}
+
+.title .span2 .p1:hover {
+  color: #1667af;
+}
+
+.title .span2 .p2 {
+  color: #aab5c0;
+}
+
+.title .span2 .p2:hover {
+  color: lightslategray;
+}
+
+.title .span2 .p3 {
+  color: lightcoral;
+}
+
+.title .span2 .p3:hover {
+  color: crimson;
+}
+
+.week-col {
+  display: flex;
+}
+
+.days {
+  flex: 1;
+  padding: 30px;
+  border: 1px solid lightgray;
+  font-size: 1em;
+  /* color: lightgray; */
+  background-color: lightsteelblue;
+}
+
+.dates-col {
+  display: flex;
+}
+
+.nums {
+  flex: 1;
+  padding: 30px;
+  /* border: 1px solid lightgray; */
+  font-size: 1em;
+  color: lightsteelblue;
+  background-color: white;
+}
+
+.nums:hover {
+  border: 1px solid lightgray;
+}
+
+.isSunday {
+  color: crimson !important;
+}
+
+.isDisable {
+  cursor: default !important;
+  pointer-events: none !important;
+  color: white !important;
+  background-color: lightgray !important;
+  opacity: 0.5 !important;
+  /* border: none !important; */
+  border: 1px solid lightslategray !important;
+}
+
+.isCurrent {
+  background-color: lightcoral !important;
+  color: white !important;
+}

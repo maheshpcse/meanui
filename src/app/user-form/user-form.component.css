@@ -1,0 +1,70 @@
+p {
+    font-size: 1em;
+    color: lightslategray;
+}
+
+input,
+textarea,
+select {
+    height: 50px;
+    padding: 1em;
+    font-size: 0.8em;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid crimson;
+}
+
+input:focus, 
+select:focus, 
+textarea:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.radio-1 {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.radio-1 input {
+    height: 25px !important;
+}
+
+.radio-2 {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.radio-2 input {
+    height: 25px !important;
+}
+
+.btn-action-save {
+    width: 100px;
+    cursor: pointer;
+    color: white;
+    background-color: coral;
+}
+
+.btn-action-save:hover {
+    background-color: chocolate;
+}
+
+.btn-action-cancel {
+    width: 100px;
+    cursor: pointer;
+    color: white;
+    background-color: lightgray;
+}
+
+.btn-action-cancel:hover {
+    background-color: lightslategray;
+}
+
+.error-note {
+    color: crimson;
+    font-size: 0.7em;
+}

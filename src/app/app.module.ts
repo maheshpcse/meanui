@@ -33,6 +33,7 @@ import { AdminProfileComponent } from './admin/admin-profile/admin-profile.compo
 import { AdminSettingsComponent } from './admin/admin-settings/admin-settings.component';
 import { UserProfileComponent } from './user/user-profile/user-profile.component';
 import { BeauticianProfileComponent } from './beautician/beautician-profile/beautician-profile.component';
+import { UserFormComponent } from './user-form/user-form.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,7 +57,8 @@ import { BeauticianProfileComponent } from './beautician/beautician-profile/beau
     AdminProfileComponent,
     AdminSettingsComponent,
     UserProfileComponent,
-    BeauticianProfileComponent
+    BeauticianProfileComponent,
+    UserFormComponent
   ],
   imports: [
     BrowserModule,

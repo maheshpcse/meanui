@@ -20,6 +20,7 @@ export class AuthGuardService {
   canActivate(): boolean {
     if (!this.authUserService.isLoggedIn()) {
       this.toastr.warningToastr('You are not authenticated or authorized user, Please login or signup.');
+      this.authUserService.isLoggedOut();
       this.router.navigate(['/login']);
       return false;
     } else {

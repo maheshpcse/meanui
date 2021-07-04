@@ -17,6 +17,10 @@ export class AuthUserService {
     return this.http.post<any>(APIURL.USER_SIGNUP, data);
   }
 
+  userReSignIn(data: any) {
+    return this.http.post<any>(APIURL.USER_RESIGNIN, data);
+  }
+
   getUserToken() {
     return sessionStorage.getItem('token');
   }
@@ -46,5 +50,14 @@ export class AuthUserService {
     } else {
       return false;
     }
+  }
+
+  isLoggedOut() {
+    localStorage.clear();
+    sessionStorage.clear();
+  }
+
+  addNewUser(data: any) {
+    return this.http.post<any>(APIURL.ADD_NEW_USER, data);
   }
 }

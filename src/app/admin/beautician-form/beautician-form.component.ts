@@ -185,16 +185,13 @@ export class BeauticianFormComponent implements OnInit {
       (response: any) => {
         console.log("Get all beauticians response isss", response);
         if (response.success) {
-          setTimeout(() => {
-            this.beauticians = response.data;
-            this.count = response.count;
-            this.createPager();
-            this.spinner = false;
-          }, 5000);
+          this.beauticians = response.data;
+          this.count = response.count;
+          this.createPager();
         } else {
           this.toastr.errorToastr(response.message);
         }
-        // this.spinner = false;
+        this.spinner = false;
       },
       (error: any) => {
         this.toastr.errorToastr("Network failed, Please try again.");

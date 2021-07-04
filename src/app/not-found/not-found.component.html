@@ -1,1 +1,43 @@
-<p>not-found works!</p>
+<app-header></app-header>
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <form #dateForm="ngForm">
+                <div class="form-group input-group">
+                    <input type="number" class="form-control" name="yearName" id="yearId" [(ngModel)]="selectYear" placeholder="Type year" required>
+                    <input type="number" class="form-control ml-2" name="monthName" id="monthId" [(ngModel)]="selectMonth" placeholder="Type month" required>
+                    <input type="number" class="form-control ml-2" name="dateName" id="dateId" [(ngModel)]="selectDate" placeholder="Type date" required>
+                    <button class="btn btn-action-search ml-2" type="submit" [disabled]="dateForm.invalid" (click)="onSearchFullDate()">Search</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="title">
+                <span class="span1 text-center" (click)="getAllDates('prev')"><i class="fa fa-angle-left"></i></span>
+                <span class="span2">
+                    <p class="p1">{{currentFullMonth}}</p>
+                    <p class="p2 ml-3">{{currentDate}},</p>
+                    <p class="p3 ml-3">{{currentYear}}</p>
+                </span>
+                <span class="span3 text-center" (click)="getAllDates('next')"><i class="fa fa-angle-right"></i></span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 week-col">
+            <div class="days text-center" *ngFor="let item of days; let i=index;">
+                {{item}}
+            </div>
+        </div>
+        <div class="col-md-12 dates-col" *ngFor="let date of dates; let i=index;">
+            <div class="nums" *ngFor="let num of date; let j=index" [ngClass]="{'isDisable': setDisableDates(num, i), 'isCurrent': setCurrentDateColour(num, i)}">
+                <div class="text-center" [ngClass]="{'isSunday': setSundayColour(num, j)}">{{ num }}</div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <br>
+        </div>
+    </div>
+</div>

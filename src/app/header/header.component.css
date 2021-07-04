@@ -1,39 +1,47 @@
 .navbar-brand {
-    color: white !important;
+  color: white !important;
+}
+
+.navbar-nav {
+  align-items: baseline;
 }
 
 .navbar-light {
-    background-color: #6495ED !important;
+  background-color: #6495ed !important;
 }
 
 .nav-item .nav-link {
-    /* border-left: 2px white solid; */
+  /* border-left: 2px white solid; */
 }
 
 .is-active a {
-    color: #ccc !important;
-    /* border-left: 2px #ccc solid !important; */
+  color: #ccc !important;
+  /* border-left: 2px #ccc solid !important; */
+}
+
+.is-active1 {
+  background-color: #ccc !important;
 }
 
 .nav-link {
-    color: white !important;
+  color: white !important;
 }
 
 .logout-link {
-    cursor: pointer;
-    border: 2px white solid !important;
+  cursor: pointer;
+  border: 2px white solid !important;
 }
 
 .dropdown-menu {
-    min-width: 15em;
+  min-width: 15em;
 }
 
 .dropdown-menu a {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .dropdown-menu .link {
-    border-top: 1px solid #ccc;
+  border-top: 1px solid #ccc;
 }
 
 .dropdown-menu .div1 {
@@ -43,16 +51,64 @@
 }
 
 .dropdown-menu .div2 {
-    display: grid;
-    justify-content: space-around;
-    align-items: center;
+  display: grid;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .dropdown-menu .p1 {
-
 }
 
 .dropdown-menu .p2 {
-    font-size: 0.8em;
-    color: #6495ED;
+  font-size: 0.8em;
+  color: #6495ed;
 }
+
+/* css logout modal styles */
+.logout-modal {
+  border: none;
+}
+
+.btn-action-out {
+  color: white;
+  background-color: #6495ed;
+}
+
+.btn-action-out:hover {
+  color: white;
+  background-color: #1668af;
+}
+
+.btn-action-in {
+  background-color: lightgray;
+}
+
+.btn-action-in:hover {
+  background-color: #aab5c0;
+}
+
+.isSuccess {
+  color: forestgreen !important;
+}
+
+.isPrimary {
+  color: #1667af !important;
+}
+
+.isDanger {
+  color: crimson !important;
+  animation: blink-animation 1s steps(5, start) infinite;
+  -webkit-animation: blink-animation 1s steps(5, start) infinite;
+}
+
+@keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
+}
+@-webkit-keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
+}
+/* endd css logout modal styles */

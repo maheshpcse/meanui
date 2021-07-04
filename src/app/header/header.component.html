@@ -67,10 +67,10 @@
                                 </div>
                             </div>
                         </a>
-                        <a class="dropdown-item link" (click)="onClickView('profile')">
+                        <a class="dropdown-item link" (click)="onClickView('profile')" [ngClass]="{'is-active1': href === 'admin-profile' || href === 'user-profile' || href === 'beautician-profile'}">
                             <i class="fa fa-user-o" aria-hidden="false"></i><span class="ml-2">My Profile</span>
                         </a>
-                        <a class="dropdown-item" (click)="onClickView('settings')" *ngIf="authUserService.isLoggedIn() && role == 'admin'">
+                        <a class="dropdown-item" (click)="onClickView('settings')" *ngIf="authUserService.isLoggedIn() && role == 'admin'" [ngClass]="{'is-active1': href === 'admin-settings'}">
                             <i class="fa fa-gear" aria-hidden="false"></i><span class="ml-2">Settings</span>
                         </a>
                         <a class="dropdown-item" (click)="userLogout()">
@@ -82,3 +82,27 @@
         </li>
     </ul>
 </nav>
+
+<ng-container *ngIf="authUserService.isLoggedIn()">
+    <div class="modal fade logout-modal" id="autoLogoutModal" tabindex="-1" role="dialog" aria-labelledby="autoLogoutModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="modal-title" id="autoLogoutModalLabel">Profile Logout or Stay confirmation ?</h6>
+                    <button type="button" class="close" aria-label="Close" (click)="userLogout()">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p class="text-center">Your profile session become to ends in</p>
+                    <p class="text-center" [ngClass]="{'isSuccess': (seconds <= 60 && seconds >= 30), 'isPrimary': (seconds <= 30 && seconds >= 20), 'isDanger': (seconds <= 20 && seconds >= 00)}">{{ showTime }}</p>
+                    <div class="form-group input-group justify-content-center">
+                        <button type="button" class="btn btn-action-in" (click)="userReLogIn()">Stay</button>
+                        <button type="button" class="btn btn-action-out ml-2" (click)="userLogout()">Logout</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>

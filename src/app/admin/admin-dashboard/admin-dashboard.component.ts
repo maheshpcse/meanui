@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { ToastrManager } from 'ng6-toastr-notifications';
 import { AuthUserService } from 'src/app/api-services/auth-user.service';
 import { BeauticianService } from 'src/app/api-services/beautician.service';
-import { timer } from 'rxjs';
+import { Subscription, timer } from 'rxjs';
 import * as _ from 'underscore';
 import * as moment from 'moment';
 declare var $: any;
@@ -18,6 +18,7 @@ export class AdminDashboardComponent implements OnInit {
   public role: any = sessionStorage.getItem('role');
   public fullName: any = sessionStorage.getItem('fullname');
 
+  subscription: Subscription;
   spinner: any = false;
   allData: any = [];
 
@@ -31,7 +32,7 @@ export class AdminDashboardComponent implements OnInit {
   ngOnInit() {
     this.spinner = true;
     const source = timer(1000, 60000);
-    const subscribe = source.subscribe(val => {
+    this.subscription = source.subscribe(val => {
       this.spinner = true;
       setTimeout(() => {
         this.getDashboardCountsData();
@@ -57,6 +58,11 @@ export class AdminDashboardComponent implements OnInit {
         this.spinner = false;
       }
     );
+  }
+
+  ngOnDestroy() {
+    console.log('Admin dashbaord component destroyed');
+    this.subscription.unsubscribe();
   }
 
 }

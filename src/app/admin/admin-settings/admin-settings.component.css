@@ -10,7 +10,7 @@
   background: none;
   border: none;
   padding: 0.4rem 1rem;
-  font-family: "Roboto", sans-serif;
+  /* font-family: "Roboto", sans-serif; */
 }
 .accordion .card-header h2 span {
   float: left;
@@ -42,7 +42,7 @@
   color: #324353;
   font-size: 1.2em;
   margin: 3rem 0 3rem 1rem;
-  font-family: "Roboto", sans-serif;
+  /* font-family: "Roboto", sans-serif; */
   position: relative;
 }
 .page-title::after {

@@ -1,27 +1,73 @@
 /* You can add global styles to this file, and also import other style files */
-html, body {
-    background-color: #dee2ec;
+html,
+body {
+  background-color: #dee2ec;
+}
+
+/* html,
+    body, */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+label,
+table thead tr th,
+table tbody tr th {
+  font-family: "Montserrat";
+  font-weight: 200;
+}
+
+p,
+span,
+a,
+ul li,
+table thead tr td,
+table tbody tr td,
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="password"],
+input[type="file"],
+textarea,
+select,
+button {
+  font-family: "VarelaRound";
+  font-weight: 100;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }
 
 /* width */
 ::-webkit-scrollbar {
-    width: 10px;
-  }
-  
-  /* Track */
-  ::-webkit-scrollbar-track {
-    background: #f1f1f1;
-  }
-  
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: #dee2e6;
-  }
-  
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: lightslategray;
-  }
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #dee2e6;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: lightslategray;
+}
 
 /* angular2-multiselect {
     height: 50px;

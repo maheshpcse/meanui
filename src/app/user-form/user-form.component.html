@@ -1,0 +1,114 @@
+<app-header></app-header>
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <p>User Registration Form :</p>
+            <hr>
+            <form #userForm="ngForm">
+                <div class="container-fluid">
+                    <div class="row mt-3">
+                        <div class="form-group col-md-4">
+                            <input type="text" class="form-control" name="firstname" id="firstnameId"
+                                placeholder="Enter first name" [(ngModel)]="firstName" #firstname="ngModel" required>
+                            <span class="error-note"
+                                *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)">
+                                <span *ngIf="firstname?.errors.required">First name is required.</span>
+                            </span>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <input type="text" class="form-control" name="lastname" id="lastnameId"
+                                placeholder="Enter last name" [(ngModel)]="lastName" #lastname="ngModel" required>
+                            <span class="error-note" *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)">
+                                <span *ngIf="lastname?.errors.required">Last name is required.</span>
+                            </span>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <input type="number" class="form-control" name="rollName" id="rollId"
+                                placeholder="Enter roll number" [(ngModel)]="rollNumber" #rollName="ngModel" required>
+                            <span class="error-note" *ngIf="rollName.invalid && (rollName.dirty || rollName.touched)">
+                                <span *ngIf="rollName?.errors.required">Roll number is required.</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="form-group col-md-4">
+                            <select name="branchname" id="branchnameId" class="form-control" [(ngModel)]="branchName"
+                                #branchname="ngModel" required>
+                                <option value="null" selected disabled>Select Branch Name :</option>
+                                <option>ECE</option>
+                                <option>CSE</option>
+                                <option>MME</option>
+                                <option>CE</option>
+                                <option>CIVIL</option>
+                                <option>MECHANICAL</option>
+                                <option>EEE</option>
+                                <option>IT</option>
+                            </select>
+                            <span class="error-note"
+                                *ngIf="branchname.invalid && (branchname.dirty || branchname.touched)">
+                                <span *ngIf="branchname?.errors.required">Branch name is required.</span>
+                            </span>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <select name="sectionname" id="sectionnameId" class="form-control" [(ngModel)]="sectionName"
+                                #sectionname="ngModel" required>
+                                <option value="null" selected disabled>Select Section Name :</option>
+                                <option>A</option>
+                                <option>B</option>
+                                <option>C</option>
+                                <option>D</option>
+                            </select>
+                            <span class="error-note"
+                                *ngIf="sectionname.invalid && (sectionname.dirty || sectionname.touched)">
+                                <span *ngIf="sectionname?.errors.required">Section name is required.</span>
+                            </span>
+                        </div>
+                        <div class="form-group col-md-2 mt-2">
+                            <div class="input-group radio-1">
+                                <input type="radio" class="form-control" name="nametype" id="studentId" value="0"
+                                    [(ngModel)]="personType" required>
+                                <label for="studentId">Student</label>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-2 mt-2">
+                            <div class="input-group radio-2">
+                                <input type="radio" class="form-control" name="nametype" id="teacherId" value="1"
+                                    [(ngModel)]="personType" required>
+                                <label for="teacherId">Teacher</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="form-group col-md-4">
+                            <input type="number" class="form-control" name="phoneName" id="phoneId"
+                                placeholder="Enter mobile number" [(ngModel)]="mobile" #phoneName="ngModel" required>
+                            <span class="error-note"
+                                *ngIf="phoneName.invalid && (phoneName.dirty || phoneName.touched)">
+                                <span *ngIf="phoneName?.errors.required">Mobile number is required.</span>
+                            </span>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <input type="text" class="form-control" name="addressName" id="addressId"
+                                placeholder="Enter home address" [(ngModel)]="address" #addressName="ngModel" required>
+                            <span class="error-note"
+                                *ngIf="addressName.invalid && (addressName.dirty || addressName.touched)">
+                                <span *ngIf="addressName?.errors.required">Address is required.</span>
+                            </span>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <input type="file" class="form-control" name="profileName" id="profileId" accept="*"
+                                (change)="onSelectFile($event)" #fileInput required>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="form-group input-group col-md-4">
+                            <button class="btn btn-action-cancel" type="reset" (click)="resetForm()">Reset</button>
+                            <button class="btn btn-action-save ml-2" type="submit" [disabled]="userForm.invalid || !profile"
+                                (click)="saveUserDetails()">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

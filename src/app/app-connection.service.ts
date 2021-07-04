@@ -4,6 +4,8 @@ export const APIURL = {
   // user authentication & authorization API URL's
   USER_LOGIN: environment.apiUrl + '/login',
   USER_SIGNUP: environment.apiUrl + '/signup',
+  USER_RESIGNIN: environment.apiUrl + '/reSignIn',
+  ADD_NEW_USER: environment.apiUrl + '/add_new_user',
 
   // user bookings API URL's
   GET_ALL_USER_BOOKINGS: environment.apiUrl + '/get_all_user_bookings',
