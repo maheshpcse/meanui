@@ -1,0 +1,396 @@
+/* start table css styles */
+.table-titles {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.table-titles .table-names {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.table-names .span1 {
+    color: lightslategray;
+    font-size: 1.1em;
+    font-weight: 600;
+}
+
+.table-names .span3 {
+    color: #a3a3a3;
+    font-size: 0.9em;
+    font-weight: 400;
+}
+
+table thead tr th {
+    /* padding: 1.5em; */
+    border-top: 1px solid lightslategray;
+    border-bottom: 1px solid lightslategray;
+    color: white;
+    font-weight: 600;
+    background-color: steelblue;
+}
+
+.main-table thead tr th:nth-child(1) {
+    cursor: pointer;
+    border-left: 1px solid lightslategray;
+    border-right: 1px solid white;
+}
+
+.main-table thead tr th:nth-child(10) {
+    border-left: 1px solid white;
+    border-right: 1px solid lightslategray;
+}
+
+.sub-table {
+    background-color: white;
+}
+
+.sub-table thead tr th:nth-child(1) {
+    cursor: pointer;
+    border-left: 1px solid lightslategray;
+    border-right: 1px solid white;
+}
+
+.sub-table thead tr th:nth-child(8) {
+    border-left: 1px solid white;
+    border-right: 1px solid lightslategray;
+}
+
+table tbody tr td {
+    /* padding: 1.5em; */
+    color: #a3a3a3;
+    font-weight: 400;
+}
+
+.table-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.btn-action-add {
+    cursor: pointer;
+    height: 50px;
+    padding: 15px;
+    color: white;
+    background-color: steelblue;
+}
+
+.btn-action-add:hover {
+    background-color: #1667af;
+}
+
+.table-actions .search-input {
+    width: 145% !important;
+}
+
+.table-actions .search-input input[type="text"] {
+    width: 550px;
+    height: 50px;
+    padding: 15px;
+    color: #a3a3a3;
+}
+
+.btn-action-filter {
+    cursor: pointer;
+    height: 50px;
+    padding: 15px;
+    color: white;
+    background-color: lightgray;
+    border-top-right-radius: 0%;
+    border-bottom-right-radius: 0%;
+}
+
+.btn-action-filter:hover {
+    background-color: lightslategray;
+}
+
+.btn-action-search {
+    cursor: pointer;
+    height: 50px;
+    padding: 15px;
+    color: white;
+    background-color: steelblue;
+    border-top-left-radius: 0%;
+    border-bottom-left-radius: 0%;
+}
+
+.btn-action-search:hover {
+    background-color: #1667af;
+}
+
+.btn-action-one,  
+.btn-action-two, 
+.btn-action-three, 
+.btn-action-four {
+    cursor: pointer;
+    color: #a3a3a3;
+    height: 50px;
+    padding: 15px;
+    border: 1px solid lightgray;
+}
+
+.btn-action-one {
+    border-top-right-radius: 0%;
+    border-bottom-right-radius: 0%;
+}
+
+.btn-action-two, .btn-action-three {
+    border-radius: 0%;
+}
+
+.btn-action-four {
+    border-top-left-radius: 0%;
+    border-bottom-left-radius: 0%;
+}
+
+.btn-action-one:hover {
+    color: white;
+    background-color: lightseagreen;
+}
+ 
+.btn-action-two:hover {
+    color: white;
+    background-color: lightgray;
+}
+ 
+.btn-action-three:hover {
+    color: white;
+    background-color: lightblue;
+}
+ 
+.btn-action-four:hover {
+    color: white;
+    background-color: crimson;
+}
+
+table tbody tr td {
+    font-size: 0.9em;
+}
+
+.action-td {
+    display: flex;
+    justify-content: space-around;
+    align-items: baseline;
+}
+
+.action-td .fa {
+    cursor: pointer;
+    padding: 0.5em;
+    border-radius: 5px;
+}
+
+.action-td .span1 {
+    color: #1667af;
+    border: 1px solid #1667af;
+}
+
+.action-td .span1:hover {
+    color: white;
+    background-color: #1667af;
+}
+
+.action-td .span2 {
+    color: lightslategray;
+    border: 1px solid lightslategray;
+}
+
+.action-td .span2:hover {
+    color: white;
+    background-color: lightslategray;
+}
+
+.action-td .span3 {
+    color: crimson;
+    border: 1px solid crimson;
+}
+
+.action-td .span3:hover {
+    color: white;
+    background-color: crimson;
+}
+
+.btn-action-open {
+    cursor: pointer;
+    color: white;
+    background-color: lightgray;
+}
+
+.btn-action-open:hover {
+    background-color: lightslategray;
+}
+
+.isActive {
+    background-color: lightslategray;
+}
+
+.isHighlight {
+    /* background-color: #dee2e6; */
+    background-color: #f1f1f1;
+}
+
+.isAll {
+    color: white;
+    background-color: lightseagreen;
+}
+
+.isPending {
+    color: white;
+    background-color: lightgray;
+}
+
+.isComplete {
+    color: white;
+    background-color: lightblue;
+}
+
+.isNotStart {
+    color: white;
+    background-color: crimson;
+}
+/* end table css styles */
+
+/* start form css styles */
+.form-titles {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.form-titles .form-names {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.form-names .span1 {
+    color: lightslategray;
+    font-size: 1.1em;
+    font-weight: 600;
+}
+
+.form-titles .span3 {
+    color: #a3a3a3;
+    font-size: 0.9em;
+    font-weight: 400;
+}
+
+.btn-action-back {
+    cursor: pointer;
+    height: 50px;
+    padding: 15px;
+    color: white;
+    background-color: lightgray;
+}
+
+.btn-action-back:hover {
+    background-color: lightslategray;
+}
+
+.form-actions label {
+    color: lightgray;
+    font-size: 1em;
+    font-weight: 200;
+    border-left: 5px solid #1667af;
+    padding: 10px;
+}
+
+.form-actions .config-box {
+    display: flex;
+    justify-content: space-around;
+    align-items: baseline;
+}
+
+.form-actions .config-box .p1 {
+    cursor: pointer;
+    color: #a3a3a3;
+    padding: 15px;
+    border: 1px solid #a3a3a3;
+    background-color: lightgray;
+    border-radius: 5px;
+}
+
+.form-actions .config-box .p1:hover {
+    color: white;
+    background-color: #1667af;
+}
+
+.form-actions .config-box .p2 {
+    cursor: pointer;
+    color: #a3a3a3;
+    padding: 15px;
+    border: 1px solid #a3a3a3;
+    background-color: lightgray;
+    border-radius: 5px;
+}
+
+.form-actions .config-box .p2:hover {
+    color: white;
+    background-color: #1667af;
+}
+
+.form-actions input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="password"],
+input[type="file"],
+input[type="range"],
+select,
+textarea {
+    height: 50px;
+    padding: 10px;
+    color: #a3a3a3;
+    font-weight: 200;
+}
+
+.btn-action-cancel {
+    cursor: pointer;
+    height: 50px;
+    padding: 15px;
+    color: white;
+    background-color: lightgray;
+}
+
+.btn-action-cancel:hover {
+    background-color: lightslategray;
+}
+
+.btn-action-save {
+    cursor: pointer;
+    height: 50px;
+    padding: 15px;
+    color: white;
+    background-color: steelblue;
+}
+
+.btn-action-addnew {
+    cursor: pointer;
+    height: 50px;
+    padding: 15px;
+    color: white;
+    background-color: steelblue;
+}
+
+.btn-action-addnew:hover {
+    background-color: #1667af;
+}
+
+.btn-action-delete {
+    cursor: pointer;
+    height: 50px;
+    padding: 15px;
+    color: white;
+    background-color: lightcoral;
+}
+
+.btn-action-delete:hover {
+    background-color: crimson;
+}
+
+.isConfig {
+    color: white;
+    background-color: #1667af;
+}
+/* end form css styles */

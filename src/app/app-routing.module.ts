@@ -15,6 +15,7 @@ import { BeauticianReportsComponent } from './beautician-reports/beautician-repo
 import { BeauticianUsersComponent } from './beautician-users/beautician-users.component';
 import { BeauticianProfileComponent } from './beautician/beautician-profile/beautician-profile.component';
 import { BeauticiansListComponent } from './beauticians-list/beauticians-list.component';
+import { GamesListComponent } from './common-pages/games-list/games-list.component';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ReportsComponent } from './reports/reports.component';
@@ -118,6 +119,10 @@ const routes: Routes = [
   {
     path: 'user-form',
     component: UserFormComponent
+  },
+  {
+    path: 'pages/games-list',
+    component: GamesListComponent
   },
   {
     path: '**',

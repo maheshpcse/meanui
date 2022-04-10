@@ -55,7 +55,7 @@ export class SignupComponent implements OnInit {
     if (this.password !== this.confirmPassword) {
       return this.toastr.errorToastr('Passwords are not matched.');
     }
-    
+
     this.spinner = true;
 
     const userSignupPayload = {
@@ -67,7 +67,7 @@ export class SignupComponent implements OnInit {
       profile: null,
       role: 'user',
       status: 1
-    }
+    };
     console.log('Post payload to user login isss', userSignupPayload);
 
     this.authUserService.userSignup(userSignupPayload).subscribe((response: any) => {

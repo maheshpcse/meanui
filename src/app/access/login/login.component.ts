@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
     const userLoginPayload = {
       userinput: this.userInput,
       password: this.password
-    }
+    };
     console.log('Post payload to user login isss', userLoginPayload);
 
     this.authUserService.userLogin(userLoginPayload).subscribe((response: any) => {

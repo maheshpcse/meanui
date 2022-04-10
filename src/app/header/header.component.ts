@@ -75,7 +75,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
             this.userLogout();
           }
         }, 1000);
-      }, 60000);
+      }, 1740000);
     }
   }
 

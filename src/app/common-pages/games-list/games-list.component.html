@@ -1,0 +1,350 @@
+<div class="container-fluid" *ngIf="viewPage === 'table'">
+    <div class="row mt-3">
+        <div class="col-md-12">
+            <div class="table-titles">
+                <div class="table-names">
+                    <span class="span1">PC Games List</span>
+                    <span class="ml-3"><i class="fa fa-angle-right" aria-hidden="false"></i></span>
+                    <span class="span3 ml-3">View New Games</span>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-action-add" (click)="onSelectPageView('form')">
+                        <i class="fa fa-plus" aria-hidden="false"></i><span class="ml-2">Add New Game</span>
+                    </button>
+                </div>
+            </div>
+            <hr style="margin: 0 !important;">
+            <div class="table-actions mt-3">
+                <span>
+                    <div class="form-group input-group search-input">
+                        <button class="btn btn-action-filter" data-toggle="dropdown">
+                            Filter<span class="ml-2"><i class="fa fa-filter" aria-hidden="false"></i></span>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" href="#">Link 1</a>
+                            <a class="dropdown-item" href="#">Link 2</a>
+                            <a class="dropdown-item" href="#">Link 3</a>
+                        </div>
+                        <input type="text" class="form-control" name="searchName" id="searchId"
+                            placeholder="Quick search" [(ngModel)]="searchQuery">
+                        <button class="btn btn-action-search" [disabled]="!searchQuery || searchQuery == ''">
+                            <i class="fa fa-search" aria-hidden="false"></i><span class="ml-2">Search</span>
+                        </button>
+                    </div>
+                </span>
+                <span>
+                    <div class="form-group input-group">
+                        <button class="btn btn-action-one" [ngClass]="{'isAll': filterList === 'all'}"
+                            (click)="onSelectFilterList('all')">
+                            <i class="fa fa-server" aria-hidden="false"></i><span class="ml-2">All</span>
+                        </button>
+                        <button class="btn btn-action-two" [ngClass]="{'isPending': filterList === 'pending'}"
+                            (click)="onSelectFilterList('pending')">
+                            <i class="fa fa-clone" aria-hidden="false"></i><span class="ml-2">Pending</span>
+                        </button>
+                        <button class="btn btn-action-three" [ngClass]="{'isComplete': filterList === 'complete'}"
+                            (click)="onSelectFilterList('complete')">
+                            <i class="fa fa-square-o" aria-hidden="false"></i><span class="ml-2">Completed</span>
+                        </button>
+                        <button class="btn btn-action-four" [ngClass]="{'isNotStart': filterList === 'not-start'}"
+                            (click)="onSelectFilterList('not-start')">
+                            <i class="fa fa-square" aria-hidden="false"></i><span class="ml-2">Not started</span>
+                        </button>
+                    </div>
+                </span>
+                <!-- <span>
+                    <div class="form-group">
+                        <button class="btn btn-action-add" (click)="onSelectPageView('form')">
+                            <i class="fa fa-plus" aria-hidden="false"></i><span class="ml-2">Add New Game</span>
+                        </button>
+                    </div>
+                </span> -->
+            </div>
+            <div class="table-data">
+                <table class="table table-borderless table-hover main-table" style="width: 100%;">
+                    <thead>
+                        <tr>
+                            <th>
+                                <input type="checkbox" name="gameNames" id="gameIds" [checked]="false">
+                            </th>
+                            <th>Index</th>
+                            <th>Title of Game</th>
+                            <th>Subtitle of Game</th>
+                            <th>Size of Game</th>
+                            <th>Available Website</th>
+                            <th>Download URL</th>
+                            <th>Download Progress</th>
+                            <th>Status</th>
+                            <th class="text-center">Action Center</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of gamesList; let i=index;"
+                            [ngClass]="{'isHighlight': i === currentIndex}">
+                            <td>
+                                <input type="checkbox" name="gameName-{{ i }}" id="gameId-{{ i }}"
+                                    [checked]="item.selected">
+                            </td>
+                            <td>{{ i+1 }}</td>
+                            <td>{{ item.title }}</td>
+                            <td>
+                                <button (click)="myFunction('demo', i)"
+                                    class="btn btn-action-open w3-btn w3-block w3-left-align"
+                                    [ngClass]="{'isActive': i === currentIndex}">
+                                    <i class="fa fa-table" aria-hidden="false"></i><span class="ml-2">View Sub
+                                        Games</span>
+                                </button>
+                                <div id="demo-{{ i }}" class="w3-hide" style="width: 100px;">
+                                    <table class="table table-borderless table-hover sub-table mt-3"
+                                        style="width: 90.5em;">
+                                        <thead>
+                                            <tr>
+                                                <th>Index</th>
+                                                <th>Name</th>
+                                                <th>Actual Size</th>
+                                                <th>Webiste</th>
+                                                <th>Download URL</th>
+                                                <th>Actual Progress</th>
+                                                <th>Status</th>
+                                                <th class="text-center">Action Center</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let data of item.sub_title; let j=index;">
+                                                <td>{{ i+1 }}.{{ j+1 }}</td>
+                                                <td>{{ data.name }}</td>
+                                                <td>{{ data.actual_size }}</td>
+                                                <td>{{ data.website }}</td>
+                                                <td>{{ data.url_download }}</td>
+                                                <td>{{ data.download_progress }}</td>
+                                                <td>{{ data.status === 0 ? 'Active' : 'Inactive' }}</td>
+                                                <td class="text-center">
+                                                    <div class="action-td">
+                                                        <span><i class="fa fa-eye span1" aria-hidden="false"></i></span>
+                                                        <span><i class="fa fa-edit ml-2 span2"
+                                                                aria-hidden="false"></i></span>
+                                                        <span><i class="fa fa-trash ml-2 span3"
+                                                                aria-hidden="false"></i></span>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </td>
+                            <td>{{ item.total_size }}</td>
+                            <td>{{ item.websites[0] + ',...' }}</td>
+                            <td>{{ item.download_urls[0] + ',...' }}</td>
+                            <td>
+                                <div class="c100 p{{ item.total_progress }} small" style="font-size: 50px !important;">
+                                    <span>{{ item.total_progress }}%</span>
+                                    <div class="slice">
+                                        <div class="bar"></div>
+                                        <div class="fill"></div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>{{ item.status === 1 ? 'Active' : 'Inactive' }}</td>
+                            <td class="text-center">
+                                <div class="action-td">
+                                    <span><i class="fa fa-eye span1" aria-hidden="false"></i></span>
+                                    <span><i class="fa fa-edit span2" aria-hidden="false"></i></span>
+                                    <span><i class="fa fa-trash span3" aria-hidden="false"></i></span>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid" *ngIf="viewPage === 'form'">
+    <div class="row mt-3">
+        <div class="col-md-12">
+            <div class="form-titles">
+                <div class="form-names">
+                    <span class="span1">PC Games List</span>
+                    <span class="ml-3"><i class="fa fa-angle-right" aria-hidden="false"></i></span>
+                    <span class="span3 ml-3">Add New Game</span>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-action-back" (click)="onSelectPageView('table')">
+                        <i class="fa fa-angle-left" aria-hidden="false"></i><span class="ml-2">Back To Games</span>
+                    </button>
+                </div>
+            </div>
+            <hr style="margin: 0 !important;">
+            <div class="form-actions mt-3">
+                <div class="form-group col-md-4">
+                    <label for="configName" class="field-required">Select Game Config</label>
+                    <div class="config-box mt-3">
+                        <p class="p1" [ngClass]="{'isConfig': viewForm === 'single'}" (click)="onSelectConfig('single')"><i class="fa fa-gear" aria-hidden="false"></i> <span class="ml-2">Single
+                                Game</span></p>
+                        <p class="p2" [ngClass]="{'isConfig': viewForm === 'multiple'}" (click)="onSelectConfig('multiple')"><i class="fa fa-gears" aria-hidden="false"></i> <span class="ml-2">Multiple
+                                Game</span></p>
+                    </div>
+                </div>
+                <hr>
+                <form #singleGameForm="ngForm" *ngIf="viewForm === 'single'">
+                    <div class="form-group input-group">
+                        <div class="form-group col-md-4">
+                            <label for="gameName" class="field-required">Add Game Name</label>
+                            <input type="text" class="form-control mt-3" name="gameName" id="gameId"
+                                placeholder="Enter game name" [(ngModel)]="gameName" required>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="gameSize" class="field-required">Add Game Size</label>
+                            <div class="form-group input-group">
+                                <select class="form-control mt-3" name="sizeConfigName" id="sizeConfigNameId"
+                                    [(ngModel)]="sizeConfigName">
+                                    <option value="null" selected disabled>Select Size Config :</option>
+                                    <option value="kb">Bytes - (1024 Bits)</option>
+                                    <option value="kb">KiloBytes - (1024 Bytes)</option>
+                                    <option value="mb">MegaBytes - (1024 KB)</option>
+                                    <option value="gb">GigaBytes - (1024 MB)</option>
+                                </select>
+                                <input type="number" class="form-control mt-3" name="gameSizeName" id="gameSizeId"
+                                    placeholder="Enter game size" [(ngModel)]="gameSize" required>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="gameProgress" class="field-required">Add Game Progress</label>
+                            <input type="range" class="form-control mt-3" name="gameProgressName" id="gameProgressId"
+                                [(ngModel)]="gameProgress" required>
+                        </div>
+                    </div>
+                    <div class="form-group input-group">
+                        <div class="form-group col-md-4">
+                            <label for="gameSite" class="field-required">Add Game Website</label>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="gameUrl" class="field-required">Add Game Download Url</label>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <form [formGroup]="siteUrlForm" enctype="multipart/form-data" method="POST">
+                            <div formArrayName="siteUrlArr">
+                                <div class="row"
+                                    *ngFor="let item of siteUrlForm['controls']['siteUrlArr']['controls']; let i=index"
+                                    [formGroupName]="i">
+                                    <div class="form-group col-md-4">
+                                        <input type="text" class="form-control" name="gameSiteName" id="gameSiteId"
+                                            placeholder="Enter game website" formControlName="siteName" required>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <input type="text" class="form-control" name="gameUrlName" id="gameUrlId"
+                                            placeholder="Enter game download url" formControlName="downloadUrl"
+                                            required>
+                                    </div>
+                                    <div class="form-group input-group col-md-4">
+                                        <button class="btn btn-action-addnew"
+                                            *ngIf="siteUrlForm['controls']['siteUrlArr']['controls'].length <= i+1"
+                                            (click)="addForm(i, 'single')">
+                                            <i class="fa fa-plus" aria-hidden="false"></i><span class="ml-2">Add Site
+                                                Url</span>
+                                        </button>
+                                        <button class="btn btn-action-delete"
+                                            *ngIf="siteUrlForm['controls']['siteUrlArr']['controls'].length > 1"
+                                            (click)="removeForm(i, 'single')"
+                                            [ngClass]="{'ml-2': i === formIndex || i > 0}">
+                                            <i class="fa fa-minus" aria-hidden="false"></i><span class="ml-2">Delete
+                                                Site Url</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="form-group input-group mt-5">
+                        <button class="btn btn-action-cancel col-md-2" (click)="onSelectPageView('table')">
+                            <i class="fa fa-times" aria-hidden="false"></i><span class="ml-2">Cancel Game</span>
+                        </button>
+                        <button class="btn btn-action-save ml-2 col-md-2" [disabled]="singleGameForm.invalid || siteUrlForm.invalid" (click)="saveGameDetails('single')">
+                            <i class="fa fa-save" aria-hidden="false"></i><span class="ml-2">Save Game</span>
+                        </button>
+                    </div>
+                </form>
+                <form #multipleGameForm="ngForm" *ngIf="viewForm === 'multiple'">
+                    <div class="form-group input-group">
+                        <div class="form-group col-md-4">
+                            <label for="subGameTitle" class="field-required">Add Game Name</label>
+                            <input type="text" class="form-control mt-3" name="subGameTitle" id="subGameTitleId"
+                                placeholder="Enter sub game name" [(ngModel)]="subGameName" required>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <form [formGroup]="seriesGameForm" enctype="multipart/form-data" method="POST">
+                            <div formArrayName="seriesGameArr">
+                                <div class="row"
+                                    *ngFor="let item of seriesGameForm['controls']['seriesGameArr']['controls']; let i=index"
+                                    [formGroupName]="i">
+                                    <div class="form-group col-md-4">
+                                        <label for="subGameName" class="field-required">Add Sub Game Name</label>
+                                        <input type="text" class="form-control mt-3" name="subGameName" id="subGameId"
+                                            placeholder="Enter sub game name" formControlName="subSeriesName" required>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="subGameSizeConfig" class="field-required">Add Sub Game Size</label>
+                                        <div class="form-group input-group">
+                                            <select class="form-control mt-3" name="subGameSizeConfigName"
+                                                id="subGameSizeConfigId" formControlName="subGameSizeConfig">
+                                                <option value="null" selected disabled>Select Size Config :</option>
+                                                <option value="kb">Bytes - (1024 Bits)</option>
+                                                <option value="kb">KiloBytes - (1024 Bytes)</option>
+                                                <option value="mb">MegaBytes - (1024 KB)</option>
+                                                <option value="gb">GigaBytes - (1024 MB)</option>
+                                            </select>
+                                            <input type="number" class="form-control mt-3" name="subGameSizeName"
+                                                id="subGameSizeId" placeholder="Enter sub game size" formControlName="subGameSize"
+                                                required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="subGameProgress" class="field-required">Add Sub Game Progress</label>
+                                        <input type="range" class="form-control mt-3" name="subGameProgressName"
+                                            id="subGameProgressId" formControlName="subGameProgress" required>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="subGameSite" class="field-required">Add Game Website</label>
+                                        <input type="text" class="form-control mt-3" name="subGameSiteName" id="subGameSiteId"
+                                            placeholder="Enter sub game website" formControlName="webSiteName" required>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="subGameUrl" class="field-required">Add Game Download Url</label>
+                                        <input type="text" class="form-control mt-3" name="subGameUrlName" id="subGameUrlId"
+                                        placeholder="Enter sub game download url" formControlName="urlDownload"
+                                        required>
+                                    </div>
+                                    <div class="form-group input-group col-md-4" style="margin-top: 65px !important;">
+                                        <button class="btn btn-action-addnew"
+                                            *ngIf="seriesGameForm['controls']['seriesGameArr']['controls'].length <= i+1"
+                                            (click)="addForm(i, 'multiple')">
+                                            <i class="fa fa-plus" aria-hidden="false"></i><span class="ml-2">Add
+                                                Series</span>
+                                        </button>
+                                        <button class="btn btn-action-delete"
+                                            *ngIf="seriesGameForm['controls']['seriesGameArr']['controls'].length > 1"
+                                            (click)="removeForm(i, 'multiple')"
+                                            [ngClass]="{'ml-2': i === formIndex || i > 0}">
+                                            <i class="fa fa-minus" aria-hidden="false"></i><span class="ml-2">Delete
+                                                Series</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="form-group input-group mt-5">
+                        <button class="btn btn-action-cancel col-md-2">
+                            <i class="fa fa-times" aria-hidden="false"></i><span class="ml-2">Cancel Game</span>
+                        </button>
+                        <button class="btn btn-action-save ml-2 col-md-2" [disabled]="multipleGameForm.invalid">
+                            <i class="fa fa-save" aria-hidden="false"></i><span class="ml-2">Save Game</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

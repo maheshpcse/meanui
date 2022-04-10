@@ -34,6 +34,7 @@ import { AdminSettingsComponent } from './admin/admin-settings/admin-settings.co
 import { UserProfileComponent } from './user/user-profile/user-profile.component';
 import { BeauticianProfileComponent } from './beautician/beautician-profile/beautician-profile.component';
 import { UserFormComponent } from './user-form/user-form.component';
+import { GamesListComponent } from './common-pages/games-list/games-list.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,7 +59,8 @@ import { UserFormComponent } from './user-form/user-form.component';
     AdminSettingsComponent,
     UserProfileComponent,
     BeauticianProfileComponent,
-    UserFormComponent
+    UserFormComponent,
+    GamesListComponent
   ],
   imports: [
     BrowserModule,

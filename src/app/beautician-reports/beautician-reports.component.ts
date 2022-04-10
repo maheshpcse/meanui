@@ -80,10 +80,10 @@ export class BeauticianReportsComponent implements OnInit {
       status: !this.statusQuery || this.statusQuery === null ? 'all' : Number(this.statusQuery),
       user_id: Number(this.userId)
     }
-    console.log('Post payload to get all users data isss', userBookingsPayload);
+    console.log('Post payload to get all user appointments data isss', userBookingsPayload);
 
     this.beauticianService.getAllUserAppointments(userBookingsPayload).subscribe((response: any) => {
-      console.log('Get all users response isss', response);
+      console.log('Get all user appointments response isss', response);
       if (response.success) {
         this.usersList = _.filter(response.data, (e: any) => {
           return e.booking_status === 0 || e.booking_status === 1
@@ -147,10 +147,10 @@ export class BeauticianReportsComponent implements OnInit {
       issued_by: this.username,
       status: 1
     }
-    console.log('Post payload to add/update report data isss', reportPayload);
+    console.log('Post payload to add/update user report data isss', reportPayload);
 
     this.beauticianService.addUpdateUserReport(reportPayload).subscribe((response: any) => {
-      console.log('Get add/update report data response isss', response);
+      console.log('Get add/update user report data response isss', response);
       if (response.success) {
         this.toastr.successToastr(response.message);
         this.closeNav();

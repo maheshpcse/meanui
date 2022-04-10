@@ -39,4 +39,4 @@ export const APIURL = {
   DELETE_RESTORE_BEAUTICIAN_BY_ID: environment.apiUrl + '/delete_restore_beautician',
   ADD_BEAUTY_PARLOUR: environment.apiUrl + '/add_beauty_parlour',
   ADD_BEAUTY_SERVICES: environment.apiUrl + '/add_beauty_services',
-}
+};
