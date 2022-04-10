@@ -54,6 +54,7 @@ export class AdminDashboardComponent implements OnInit {
         this.spinner = false;
       },
       (error: any) => {
+        console.log('Error while getting dashboard counts', error);
         this.toastr.errorToastr("Network failed, Please try again.");
         this.spinner = false;
       }
@@ -62,7 +63,9 @@ export class AdminDashboardComponent implements OnInit {
 
   ngOnDestroy() {
     console.log('Admin dashbaord component destroyed');
-    this.subscription.unsubscribe();
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 
 }

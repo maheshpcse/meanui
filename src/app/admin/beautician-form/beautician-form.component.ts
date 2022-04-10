@@ -217,7 +217,7 @@ export class BeauticianFormComponent implements OnInit {
     //     : Math.round(this.count / this.limit) + 1;
     // endLimit = endLimit === 0 ? 1 : endLimit;
     // console.log("end limit isss", endLimit);
-    
+
     let endLimit: any = 0;
     const totalNum = Number(this.count / this.limit);
     if (totalNum <= Math.round(Number(this.count / this.limit))) {
